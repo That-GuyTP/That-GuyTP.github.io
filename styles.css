@@ -7,12 +7,12 @@ body {
     text-align: center;
   }
   .assign {
-    display: flex;
+    background: grey; 
     padding: 10px;
     margin: 10px;
-    background: grey; 
+    display: flex;
   }
-  .assign img {
+  .assign img{
     width: 200px;
     padding: 10px;
   }
