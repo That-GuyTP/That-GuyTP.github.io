@@ -1,24 +1,27 @@
 body {
     background: lightgray;
     font-family: serif, Tahoma; 
-  }
-  h1 {
+}
+h1 {
     color: black;
     background: darkred;
     text-align: center;
     padding: 15px;
-  }
-  .assign {
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+a:hover {
+    color: darkred;
+}
+.assign {
     background: grey; 
     padding: 10px;
     margin: 10px;
     display: flex;
-  }
-  .assign img{
+}
+.assign img {
     width: 650px;
     padding: 50px;
-  }
-  a{
-      text-decoration: none;
-      color: black;
-  }
+}
