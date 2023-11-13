@@ -15,6 +15,9 @@ a {
 a:hover {
     color: darkred;
 }
+p {
+    font-size: 22px;
+}
 .assign {
     background: grey; 
     padding: 10px;
