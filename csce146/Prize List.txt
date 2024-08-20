@@ -1,0 +1,11 @@
+apple\t2\n
+goldbar\t4000\n
+car\t20000\n
+book\t10\n
+microwave\t30\n
+resort ticket\t600\n
+trip to Europe\t1000\n
+two motorcycles\t50000\n
+mansion in CA\t2000000\n
+james bond movie collection\t100\n
+copy of the declaration of independence\t30\n

@@ -1,0 +1,56 @@
+package edu.mtc.egr281.chapter06;
+
+//Thomas Peterson
+//Project11
+//Current Date: 11-11-2022
+//Due Date: 11-10-22
+//To create a snail racing game using object orientated programing methods.
+
+//ALGORITHM DESIGN
+//Essentially copy the "Die" example from files
+//Change variables accordingly
+//Add new String for whatever color the player chooses
+//Add a method to get the value of the roll, and turn it into the number that will be used for the column increase.
+
+public class Project11ColoredDie {
+
+//Fields
+	private String color;
+	private int currentDiceRoll;
+	
+//Constant
+
+	
+//Constructors
+	public Project11ColoredDie(int newColor) {
+		this.setColor(newColor);
+		this.setDiceRoll(0);
+
+	}//EOC constructor
+	
+//METHODS
+	public String getColor() {
+		return this.color;
+	}//EOC getColor
+	
+	private void setColor(String newColor) {
+		this.color = newColor;
+	}//EOC setColor;
+	
+	public int getDiceRoll() {
+		return this.currentDiceRoll;
+	}//EOC getDiceRoll
+	
+	private void setDiceRoll(int newDiceRoll) {
+		this.currentDiceRoll = newDiceRoll;
+	}//EOC setDiceRoll
+	
+	public String roll(int update) {
+		String rv = this.getDiceRoll() + " has been rolled";
+		this.setDiceRoll(update + this.getDiceRoll());
+		switch
+		
+		return rv;
+	}//EOC roll
+	
+}//EOC Project11ColoredDie

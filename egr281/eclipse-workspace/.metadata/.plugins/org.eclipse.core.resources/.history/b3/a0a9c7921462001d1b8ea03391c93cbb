@@ -1,0 +1,33 @@
+package edu.mtc.egr281.chapter06;
+
+import java.util.Scanner;
+
+public class Project11 {
+
+//Fields
+	private static Scanner kb;
+	private static Project11[] players;
+	private static Project11ColoredDie cd1, cd2;
+	
+//Constants
+	
+	
+//Constructors
+	
+	
+//Methods
+	
+	public static void main(String[] args) {
+		
+		//GAME
+		int index = -1;
+		Project11ColoredDie player;
+		
+		do {
+			++index;
+			player = players[index % players.length];
+		} while(player.getCurrentSpace() != 9);
+		System.out.print(player.getName() + " guessed the right color. They win.");
+	}//EOC method main
+	
+}//EOC Project11

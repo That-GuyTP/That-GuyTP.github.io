@@ -1,0 +1,54 @@
+package edu.mtc.egr281.chapter06;
+
+//Thomas Peterson
+//Project11
+//Current Date: 11-11-2022
+//Due Date: 11-10-22
+//To create a snail racing game using object orientated programming methods.
+
+//ALGORITHM DESIGN
+//Set up string and boolean 
+//Display
+
+//-color : String
+//-currentSpace : int
+//+getCurrentSpace() : int
+//-setCurrentSpace(int) : void
+//+incrementCurrentSpace() : void
+//+getColor() : String
+//-setColor(String) : void
+
+public class Project11Snails {
+
+//Fields
+	private String color;
+	private int currentSpace;
+	
+//Constants
+	
+	
+//Constructors
+	
+	
+//Methods
+	public int getCurrentSpace() {
+		return this.currentSpace;
+	}//EOC getCurrentSpace
+	
+	private void setCurrentSpace(int newCurrentSpace) {
+		this.currentSpace = newCurrentSpace;
+	}//EOC setCurrentSpace
+	
+	public void incrementCurrentSpace() {
+		
+	}//EOC incrementCurrentSpace
+	
+	public String getColor() {
+		return this.color;
+	}//EOC getColor
+	
+	private void setColor(String newColor) {
+		this.color = newColor;
+	}//EOC setColor
+	
+}//EOC

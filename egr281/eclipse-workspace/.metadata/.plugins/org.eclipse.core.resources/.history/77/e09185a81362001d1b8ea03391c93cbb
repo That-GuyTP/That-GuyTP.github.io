@@ -1,0 +1,24 @@
+package edu.mtc.egr281.chapter06;
+
+import java.util.Scanner;
+
+public class Project11 {
+
+//Fields
+	private static Scanner kb;
+	private static Project11[] players;
+	private static Project11ColoredDie cd1, cd2;
+	
+//Constants
+	
+	
+//Constructors
+	
+	
+//Methods
+	
+	public static void main(String[] args) {
+		
+	}//EOC method main
+	
+}//EOC Project11

@@ -1,0 +1,4 @@
+4\tWork On Test\n
+3\tDo Homework\n
+1\tSleep\n
+2\tEat Food\n

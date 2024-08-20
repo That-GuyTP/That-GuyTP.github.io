@@ -1,0 +1,82 @@
+package edu.mtc.egr281.chapter06;
+
+//Thomas Peterson
+//Project11
+//Current Date: 11-11-2022
+//Due Date: 11-10-22
+//To create a snail racing game using object orientated programming methods.
+
+//ALGORITHM DESIGN
+//Set up string and boolean 
+//Display
+
+//-color : String
+//-currentSpace : int
+//+getCurrentSpace() : int
+//-setCurrentSpace(int) : void
+//+incrementCurrentSpace() : void
+//+getColor() : String
+//-setColor(String) : void
+
+public class Project11Snails {
+
+//Fields
+	private String color;
+	private int currentSpace;
+	
+	//private String[][] snailGameBoard = { {"Orange |", "Orange |", "Orange |", "Orange |", "Orange |", "Orange |", "Orange |", "Orange |", "Orange |"},
+	//									  {"Green |", "Green |", "Green |", "Green |", "Green |", "Green |", "Green |", "Green |", "Green |"},
+	//									  {"Pink |", "Pink |", "Pink |", "Pink |", "Pink |", "Pink |", "Pink |", "Pink |", "Pink |"},
+	//									  {"Red |", "Red |", "Red |", "Red |", "Red |", "Red |", "Red |", "Red |", "Red |"},
+	//									  {"Blue |", "Blue |", "Blue |", "Blue |", "Blue |", "Blue |", "Blue |", "Blue |", "Blue |"},
+	//									  {"Yellow |", "Yellow |", "Yellow |", "Yellow |", "Yellow |", "Yellow |", "Yellow |", "Yellow |", "Yellow |"} };
+	//
+	//private boolean[][] boardCurrentSpace = { {false, false, false, false, false, false, false, false, false, },
+	//										{false, false, false, false, false, false, false, false, false, },
+	//										{false, false, false, false, false, false, false, false, false, },
+	//										{false, false, false, false, false, false, false, false, false, },
+	//										{false, false, false, false, false, false, false, false, false, },
+	//										{false, false, false, false, false, false, false, false, false, } };
+	
+//Constants
+	
+	
+//Constructors
+	public Project11Snails(String newColor) {
+		this.setColor(newColor);
+		this.setCurrentSpace(0);
+	}//EOC constructor default
+	
+	
+//Methods
+	public int getCurrentSpace() {
+		return this.currentSpace;
+	}//EOC getCurrentSpace
+	
+	private void setCurrentSpace(int newCurrentSpace) {
+		this.currentSpace = newCurrentSpace;
+	}//EOC setCurrentSpace
+	
+	public void incrementCurrentSpace() {
+		
+	}//EOC incrementCurrentSpace
+	
+	public String getColor() {
+		return this.color;
+	}//EOC getColor
+	
+	private void setColor(String newColor) {
+		this.color = newColor;
+	}//EOC setColor
+	
+	
+	
+	//public void printSnailGameBoard() {
+	//	for(int row = 0; row < snailGameBoard.length; ++row) {
+	//		for(int column = 0; column < snailGameBoard[row].length; ++column) {
+	//			System.out.print(snailGameBoard[row][column]);
+	//		}
+	//	}
+	//}
+	
+}//EOC

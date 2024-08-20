@@ -1,0 +1,19 @@
+package edu.mtc.egr281.chapter06;
+
+public class Project11ColoredDieDriver {
+
+	public static void main(String[] args) {
+		
+		Dice cd1 = new Dice();
+		for(int i = 0; i < snailGameBoard.length; ++i) {
+			cd1.roll();
+			System.out.print("Roll Color" + (i+1) + ": " + cd1.getValue());
+			if(cd1.isDoubles()) {
+				System.out.print(" - You rolled two of the same color. That snail moves twice!");
+			}//EOC if
+			System.out.println();
+		}//EOC for
+		
+	}//EOC method main
+	
+}//EOC coloredDieDriver

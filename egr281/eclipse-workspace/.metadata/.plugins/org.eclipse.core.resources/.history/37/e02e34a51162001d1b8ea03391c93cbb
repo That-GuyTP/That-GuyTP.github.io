@@ -1,0 +1,14 @@
+package edu.mtc.egr281.chapter06;
+
+import java.util.Scanner;
+
+public class Project11 {
+
+	public static void main(String[] args) {
+		Project11Snails SnailsRacingGame = new Project11Snails();
+		
+		Scanner kb = new Scanner(System.in);
+		
+	}//EOC method main
+	
+}//EOC Project11

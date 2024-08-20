@@ -1,0 +1,15 @@
+package edu.mtc.egr281.chapter03;
+
+import java.util.Scanner;
+
+public class SimpleNestedIf {
+
+	//Declaration
+	Scanner kb = new Scanner(System.in);
+	
+	System.outprint("Do you want to see a movie? ");
+	
+	//Close Scanner
+	kb.close();
+	
+}//EOC SimpleNestedIf
