@@ -1,7 +1,0 @@
-package edu.mtc.egr281.chapter06;
-
-import java.util.Random;
-
-public class Project11ColoredDie {
-
-}
