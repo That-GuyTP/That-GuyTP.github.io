@@ -1,3 +1,4 @@
+/* ASSIGNMENT 02 */
 /* STRUCTURE */
 h1{
     text-align: center;
@@ -35,9 +36,9 @@ head {
 
 /* CUSTOMIZATION */
 
-@font-face {
+@font-face { /* Not Working */
     font-family: font-custom-Futura;
-    src: url(/Futura_Medium.ttf);
+    src: url('../../fonts/Futura_Medium.ttf');
 }
 
 body {
@@ -45,7 +46,7 @@ body {
     color: darkgoldenrod;
     margin-top:10px;
     text-align:center;
-    font-family: font-custom-Futura;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 20px;
 }
 

@@ -1,0 +1,53 @@
+/* MAIN PAGE */
+/* STRUCTURE */
+h1 {
+    text-align: center;
+    background-color: maroon;
+    display:block;
+    padding: 0 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    border-radius: 2px;
+    width:67%;
+    border: 5px white;
+    box-shadow:  0 0 0 2px white;
+}
+
+/* CUSTOMIZATION */
+body {
+    background-color:black;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+div {
+    background-color: maroon;
+    border-radius: 2px;
+    padding-bottom: 15px;
+    width: 67%;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: auto;
+    margin-bottom: 15px;
+    border: 5px white;
+    box-shadow:  0 0 0 2px white;
+}
+
+h2 {
+    padding-top: 4px;
+}
+
+#main-nav li {
+    list-style-type: none;
+    color:white;
+}
+
+#main-nav a {
+    text-decoration: none;
+    color: white;
+}
+
+#main-nav a:hover {
+    color: black;
+}
