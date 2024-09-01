@@ -1,5 +1,8 @@
-/* MAIN PAGE */
 /* STRUCTURE */
+header {
+    padding-left: 15px;
+}
+
 h1 {
     text-align: center;
     background-color: maroon;
@@ -36,7 +39,37 @@ div {
 
 h2 {
     padding-top: 4px;
+    text-align:center;
 }
+
+#assignments h2 {
+    padding-top:5px;
+    text-align:center;
+}
+
+#main-assignment-boxes {
+    background-color:black;
+    padding: 20px;
+    margin-top:5px;
+    text-align: center;
+    width: 90%;
+}
+
+#main-assignment-boxes img {
+    padding-top: 10px;
+    width: 300px;
+    height: 150px;
+}
+
+#main-assignment-boxes a {
+    text-decoration: none;
+    color:white;
+}
+
+#main-assignment-boxes a:hover {
+    color:maroon;
+}
+
 
 /* NAVIGATION */
 #main-nav ul {
@@ -55,4 +88,32 @@ h2 {
 
 #main-nav a:hover {
     color: black;
+}
+
+
+/* MEDIA QUERIES */
+@media only screen and (min-width:600px) { /* Applies to 600px and larger screen size */
+    .columns {
+        display:flex;
+    }
+    
+    .one { /* We are using this class to split the flex attribute eveninly and as a ration of 1:1 */
+        flex:1;
+    }
+
+    .two { /* This assigns a 2:1 ratio */
+        flex:2;
+    }
+
+    .three {
+        flex:3;
+    }
+
+    .four {
+        flex: 4;
+    }
+
+    #main-nav li {
+        flex:1;
+    }
 }
