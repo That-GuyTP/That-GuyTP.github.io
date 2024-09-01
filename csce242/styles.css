@@ -38,6 +38,11 @@ h2 {
     padding-top: 4px;
 }
 
+/* NAVIGATION */
+#main-nav ul {
+    padding: 3px;
+}
+
 #main-nav li {
     list-style-type: none;
     color:white;
