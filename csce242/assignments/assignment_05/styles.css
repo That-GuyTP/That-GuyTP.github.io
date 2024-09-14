@@ -18,13 +18,14 @@ body {
     text-align: center;
     align-content: center;
     color:#597D35;
+    max-width:80%;
+    margin:auto;
 }
 
 #main-div section {
     border: 1px solid brown;
     background-color:#B97333;
     padding:10px;
-    width:40%;
     margin-left:5px;
     margin-right:5px;
 }
@@ -50,7 +51,7 @@ body {
 }
 
 .container {
-    width:200px;
+    width:530px;
     height:100px;
     display:flex;
     justify-content:center;

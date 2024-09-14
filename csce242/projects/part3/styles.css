@@ -1,0 +1,290 @@
+:root {
+    --prim-color:#0D1130;
+    --sec-color:#E2CE28;
+    --bckgrd-color:#2A3162;
+    --nav-color:white;
+}
+
+@font-face {
+    font-family: 'website-font';
+    src: url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+}
+
+.jost {
+    font-family: "Jost", system-ui;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+}
+
+/* FORMAT & STYLES*/
+#main-html {
+    background-color:var(--bckgrd-color);
+    text-align:center;
+}
+
+body {
+    align-items: center;
+    color:var(--sec-color);
+    font-family: 'website-font';
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+p {
+    font-size:19px;
+}
+
+div {
+    background-color:var(--prim-color);
+    padding: 10px;
+    margin-bottom:10px;
+    border-radius:3px;
+}
+
+/* Main Page */
+#div-intro {
+    background:none;
+}
+
+#portrait {
+    width: 400px;
+    height: 300px;
+}
+
+#quote {
+    font-size:20px;
+    color:var(--nav-color);
+    position:relative;
+    top:-40px;
+}
+
+/* About Me */
+#bio {
+    position:relative;
+    top:70px;
+}
+
+/* Information */
+#symp-list{
+    font-size:19px;
+    text-align:left;
+}
+
+#symp-list li{
+    padding:4px;
+}
+
+/* Treatment */
+#life-list{
+    text-align: left;
+    font-size:19px;
+}
+
+/* Info */
+#chart-img {
+    margin-top:5px;
+    max-height:100%;
+    max-width:100%;
+}
+
+#long {
+    overflow-y:visible;
+}
+
+#buttons {
+    padding-left:0px;
+}
+
+#buttons li{
+    display:inline-block;
+    list-style-type: none;
+}
+
+/* NAVIGATION */
+.nav ul{
+    padding:0px;
+    text-align:center;
+}
+
+.nav li{
+    list-style-type: none;
+    display:inline-block;
+    padding:0px;
+}
+
+.nav ul li:not(:last-child):after {
+    content: " | ";
+    color:var(--nav-color);
+    text-decoration:solid;
+}
+
+.nav a {
+    text-decoration: none;
+    color:var(--nav-color);
+}
+
+.nav a:hover {
+    background-color:var(--bckgrd-color);
+    color:var(--sec-color);
+}
+
+.second-nav {
+    position:relative;
+    top:10px;
+}
+
+#main-nav {
+    position:relative;
+    top:-70px;
+}
+
+/* SHAPES */
+.crescent-moon {
+	--w: 60px; /* Base Size */
+	--angle: -5deg; /* Rotation */
+	position: relative;
+	width: var(--w);
+	height: var(--w);
+}
+
+.crescent-moon::before {
+	content: "";
+	position: absolute;
+	top: 8.5%;
+	left: 30%;
+	width: calc(var(--w) / 1.4);
+	height: calc(var(--w) / 1.4);
+	border-radius: 50%;
+	/* Shape adjustment */
+	box-shadow: calc(var(--w) / (-6)) 0px 0px calc(var(--w) / 7) var(--sec-color);
+	transform: rotate(var(--angle));
+}
+
+#moon {
+    position:relative;
+    left: 280px;
+    bottom:65px;
+    animation: rise 1.7s ease-out forwards;
+    z-index:-100;
+}
+
+@keyframes rise {
+    0% {
+        bottom: -150px;
+    }
+
+    100% {
+        bottom: 65px;
+    }
+}
+
+/* Hill */
+.hill {
+    position:absolute;
+    z-index:-100;
+    height: 1000px;
+    width: 1000px;
+    background-color: var(--prim-color);
+    border-radius: 50%;
+    right:-260px;
+    bottom:-320px;
+}
+
+/* Buttons */
+.isClicked {
+    background: var(--sec-color);
+    color: var(--prim-color);
+    border: 1px solid var(--sec-color);
+    border-radius: 3px;
+}
+
+.notClicked {
+    background: var(--prim-color);
+    color:var(--nav-color);
+    border: 1px solid var(--nav-color);
+    border-radius: 3px;
+}
+
+/* MEDIA QUERIES */
+/* Larger Resolutions */
+@media only screen and (min-width:600px) {
+    #main-html {
+        max-width:60%;
+        margin:auto;
+    }
+
+    .columns {
+        display:flex;
+    }
+
+    .one {
+        flex:1;
+    }
+
+    .three {
+        flex:3;
+        text-align:left;
+    }
+
+    /* Main-Page */
+    h1 {
+        font-size:69px;
+    }
+
+    #main-nav {
+        top:-100px;
+    }
+
+    .nav {
+        position:relative;
+        top:-30px;
+    }
+
+    #div-intro {
+        position:relative;
+        bottom:-80px;
+    }
+
+    #div-img {
+        position:relative;
+        bottom:-100px;
+    }
+
+    #quote {
+        position:relative;
+        top:-70px;
+    }
+
+    @keyframes rise {
+        0% {
+            bottom: -150px;
+        }
+    
+        100% {
+            bottom: 110px;
+        }
+    }
+
+    #moon {
+        left: 651px;
+        bottom:100px;
+    }
+
+    .hill {
+        width:2000px;
+        height:1900px;
+        top:300px;
+        right:-38px;
+    }
+
+    /* About Me */
+    #bio {
+        top:0px;
+    }
+
+    /* Info */
+    #button{ /* Can't seem to get these guys to vertically align. */
+        display:none;
+    }
+}

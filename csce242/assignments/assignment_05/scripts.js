@@ -19,7 +19,7 @@ b2.onclick = () => {
 //SLIDER
 const slider = document.getElementById("slider");
 const image = document.getElementById("image");
-slider.addEventListener("input", (e) => {
-    const sliderValue = e.target.value;
-    image.style.left = '${sliderValue}px';
-});
+slider.onchange = () => {
+    const sliderValue = slider.value + 'px';
+    image.style.left = sliderValue;
+};
