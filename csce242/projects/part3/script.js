@@ -10,22 +10,22 @@ but_norm.onclick = () => {
     but_norm.classList.replace("isClicked");
     but_both.classList.replace("notClicked");
     but_narc.classList.replace("notClicked");
-    img.src = img.src.replace('../../images/../../images/ProjectPart_03_Normal-Sleep.png')
-}
+    img.src = img.src.replace('../../images/../../images/ProjectPart_03_Normal-Sleep.png');
+};
 
 but_narc.onclick = () => {
-    but_narc.classList.replace("notClicked");
+    but_narc.classList.replace("isClicked");
     but_norm.classList.replace("notClicked");
     but_both.classList.replace("notClicked");
-    img.src = img.src.replace('../../images/../../images/ProjectPart_03_Narc-Sleep.png')
-}
+    img.src = img.src.replace("../../images/../../images/ProjectPart_03_Narc-Sleep.png");
+};
 
 but_both.onclick = () => {
     but_both.classList.replace("isClicked");
-    but_both.classList.replace("notClicked");
-    but_narc.classList.replace("isClicked");
-    img.src = img.src.replace('../../images/../../images/ProjectPart_03_Both.png')
-}
+    but_norm.classList.replace("notClicked");
+    but_narc.classList.replace("notClicked");
+    img.src = img.src.replace('../../images/../../images/ProjectPart_03_Both.png');
+};
 
 const fn = document.getElementById("First-name");
 const ln = document.getElementById("Last-name");

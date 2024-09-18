@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <div id="main-head">
+            <title>Assignment 6</title>
+            <link rel="stylesheet" href="styles.css">
+            <h2>Assignment 6</h2>
+            <h3>If Statements</h3>
+        </div>
+    </head>
+    <body>
+        <div id="main-div">
+
+            <!--Navigation-->
+            <div id="toggle-arrow-up" class="hidden-small">
+                <button>&uarr;</button>
+            </div>
+            <div id="toggle-arrow-down" class="none">
+                <button>&darr;</button>
+            </div>
+            <ul id="ex-nav" class="columns hidden-small nav">
+                <li><a id="ex1" href="#">Exercise 1</a></li>
+                <li><a id="ex2" href="#">Exercise 2</a></li>
+            </ul>
+
+            <!--Slider-->
+            <div id="ex-slider" class="hidden">
+                <section id="color-slider">
+                    <h2>Color Slider</h2>
+                    <input id="slider" type="range" min="0" max="255" value="1">
+                    <p id="text">Slide to Add Red!</p>
+                </section>
+            </div>
+
+            <!--Resizer-->
+            <div id="ex-resizer" class="hidden">
+                <section id="resizer-content">
+                    <h2>Image Resizer</h2> <br>
+                    <button id="small" class="size-button">Small</button>
+                    <button id="medium" class="size-button">Medium</button>
+                    <button id="large" class="size-button">Large</button>
+                    <div id="img-container"> 
+                        <img id="random-img" src="https://picsum.photos/200" alt="a photo that changes with every refresh">
+                    </div>
+                </section>
+            </div>
+        </div>
+        <script src="scripts.js"></script>
+    </body>
+</html>

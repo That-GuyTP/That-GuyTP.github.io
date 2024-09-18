@@ -1,0 +1,144 @@
+:root {
+    --background-color: rgb(0,0,0);
+}
+
+/* Visible? */
+.center{ 
+   margin:auto; 
+}
+
+.hidden {
+    display:none;
+}
+
+.hidden-small {
+    display:none;
+}
+
+/* Cusomization */
+html {
+    background-color: lightgray;
+    font-family:'Courier New', Courier, monospace;
+}
+
+#main-head {
+    text-align: center;
+    color:palevioletred;
+}
+
+#main-div {
+    text-align: center;
+    background-color: palevioletred;
+    padding:5px;
+}
+
+/* Arrow */
+#toggle-arrow-up {
+    background-color:lightgray;
+    width:15px;
+}
+
+#toggle-arrow-down {
+    background-color:lightgray;
+    width:15px;
+}
+
+/* Exercise Navigation */
+#ex-nav {
+    text-align:left;
+    padding-left:0px;
+}
+
+#ex-nav ul {
+    margin:0;
+}
+
+#ex-nav li{
+    list-style-type: none;
+    padding-left:0px;
+    padding:5px;
+}
+
+#ex-nav a {
+    text-decoration: none;
+    color:palegreen;
+    padding:5px;
+}
+
+#ex-nav a:hover {
+    color:lightgray;
+}
+
+/* color-slider */
+#ex-slider {
+    background-color:rgb(0,0,0);
+    margin:auto;
+    padding:5px;
+    margin-bottom:10px;
+    max-width:100%;
+    max-height:100%;
+}
+
+#text {
+    color:white;
+}
+
+#ex-slider h2 {
+    color:white;
+}
+
+/* Image Resizer */
+#ex-resizer {
+    padding:10px;
+}
+
+.size-button {
+    margin: 5px;
+    padding: 10px 20px;
+    background-color:lightgray;
+    color:palevioletred;
+}
+
+#random-img {
+    margin-top: 15px;
+    max-width:100%;
+    height:auto;
+}
+
+@media only screen and (min-width: 600px) {
+    #main-nav li {
+        flex:1;
+    }
+
+    .columns {
+        display:flex;
+    }
+
+    #toggle-arrow-up {
+        display:none;
+    }
+
+    #toggle-arrow-down {
+        display:none;
+    }
+
+    .hidden-small {
+        display:flex;
+    }
+
+    #ex-nav {
+        display:flex;
+        justify-content: center;
+    }
+
+    #ex-nav ul {
+        display: inline-block;
+        margin: 0;
+    }
+
+    #ex-nav li:not(:last-child):after {
+        content: " | ";
+        color:var(--nav-color);
+        text-decoration:solid;
+    }
+}

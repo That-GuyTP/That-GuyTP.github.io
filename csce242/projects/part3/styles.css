@@ -1,3 +1,5 @@
+/* USE DEV TOOLS TO MAKE SURE ALLIGNMENT OF SHAPES IS CORRECT IN PHONE AND WEBSITE DISPLAYS!!!*/
+
 :root {
     --prim-color:#0D1130;
     --sec-color:#E2CE28;
@@ -73,6 +75,10 @@ div {
 
 #symp-list li{
     padding:4px;
+}
+
+#copyright {
+    font-size:10px;
 }
 
 /* Treatment */
@@ -212,6 +218,10 @@ div {
     #main-html {
         max-width:60%;
         margin:auto;
+    }
+
+    .block {
+        display:block;
     }
 
     .columns {
