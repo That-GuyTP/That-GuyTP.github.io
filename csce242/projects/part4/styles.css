@@ -65,6 +65,10 @@ div {
     top:-40px;
 }
 
+#img-intro {
+    max-width:100%;
+}
+
 /* About Me */
 #bio {
     position:relative;
@@ -261,6 +265,11 @@ div {
         flex:1;
     }
 
+    .two {
+        flex:2;
+        text-align:left;
+    }
+
     .three {
         flex:3;
         text-align:left;
@@ -326,4 +335,13 @@ div {
     #button{ /* Can't seem to get these guys to vertically align. */
         display:none;
     }
+
+    /* Support */
+    .support-img {
+        margin-right:5px;
+        margin-bottom:10px;
+        height:auto;
+        max-width:90%;
+    }
+
 }

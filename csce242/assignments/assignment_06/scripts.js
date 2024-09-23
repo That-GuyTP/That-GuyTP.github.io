@@ -1,3 +1,5 @@
+//The reason I declare a constant before the function is because I often run into an error where the button doesn't work if not made into a constant. This is very inconsistent and I typically declare the element as a const to help with this.
+
 /* Arrow Navs */
 const uparrow = document.getElementById("toggle-arrow-up");
 uparrow.onclick = () => {
