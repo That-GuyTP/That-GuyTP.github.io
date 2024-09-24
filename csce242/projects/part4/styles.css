@@ -5,6 +5,7 @@
     --sec-color:#E2CE28;
     --bckgrd-color:#2A3162;
     --nav-color:white;
+    --input-color:grey;
 }
 
 @font-face {
@@ -107,6 +108,11 @@ div {
     font-size:19px;
 }
 
+.lifestyle-img {
+    margin-top: 15px;
+    max-width: 100%;
+}
+
 /* Info */
 #chart-img {
     margin-top:5px;
@@ -125,6 +131,14 @@ div {
 #buttons li{
     display:inline-block;
     list-style-type: none;
+}
+
+/* Support */
+.user-info {
+    width:270px;
+    height:30px;
+    font-style:italic;
+    color:var(--input-color);
 }
 
 /* NAVIGATION */
@@ -291,7 +305,9 @@ div {
 
     #div-intro {
         position:relative;
-        bottom:-80px;
+        bottom:10px;
+        left:160px;
+        max-width:70%;
     }
 
     #div-img {
@@ -302,6 +318,17 @@ div {
     #quote {
         position:relative;
         top:-70px;
+    }
+
+    #img-intro {
+        position:relative;
+        bottom:145px;
+        max-width:60%;
+        height:390px;
+        display:block;
+        margin-left:auto;
+        margin-right:auto;
+        overflow-y:visible;
     }
 
     @keyframes rise {
@@ -335,6 +362,17 @@ div {
     #button{ /* Can't seem to get these guys to vertically align. */
         display:none;
     }
+
+    /* Treatment */
+    .lifestyle-img {
+        margin-top: 15px;
+        max-width: 30%;
+        height: auto;
+        display:block;
+        margin-left:auto;
+        margin-right:auto;
+    }
+
 
     /* Support */
     .support-img {
