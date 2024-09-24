@@ -1,0 +1,66 @@
+/* Main Styling */
+#page {
+    background:tan;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#main-head{
+    background-color: sienna;
+    width:30%;
+    margin:auto;
+    color:aqua;
+}
+
+#main-div {
+    background-color:sienna;
+    color:aqua;
+    width:40%;
+    margin:auto;
+    padding:5px;
+}
+
+/* Interactions */
+#interactions {
+    display:inline-block;
+}
+
+/* Input */
+#star-input {
+    width:40px;
+}
+
+/* Button */
+#star-button {
+    margin: 10px;
+}
+
+/* Section */
+#star-printout {
+    background:black;
+    position:relative;
+    width:500px;
+    height:500px;
+    margin:auto;
+}
+
+/* Star */
+.star {
+    position: absolute;
+    color: gold;
+    font-size: 15px;
+}
+
+/* Error */
+.hidden {
+    display:none;
+}
+
+.error {
+    color:red;
+}
+
+/* Clicked Star Message */
+#star-number {
+    font-size: 25px;
+}

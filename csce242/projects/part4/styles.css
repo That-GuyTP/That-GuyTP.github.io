@@ -103,9 +103,17 @@ div {
 }
 
 /* Treatment */
+#life-list-container {
+    background-color: var(--bckgrd-color);
+}
+
 #life-list{
     text-align: left;
     font-size:19px;
+}
+
+#lifelist div{
+    margin:10px;
 }
 
 .lifestyle-img {
@@ -261,7 +269,6 @@ div {
 
     .columns {
         display:flex;
-        display: flex;
     }
 
     .columns .one button {
@@ -364,13 +371,24 @@ div {
     }
 
     /* Treatment */
+    .life-list {
+        display:flex;
+        flex-wrap:wrap;
+        background-color: var(--bckgrd-color);
+    }
+    
     .lifestyle-img {
         margin-top: 15px;
-        max-width: 30%;
-        height: auto;
+        width: 400px;
+        height: 300px;
         display:block;
         margin-left:auto;
         margin-right:auto;
+    }
+
+    .life-list-item {
+        margin:5px;
+        flex:40%;
     }
 
 
