@@ -49,6 +49,12 @@ div {
     border-radius:3px;
 }
 
+.star {
+    position: absolute;
+    color: var(--nav-color);
+    font-size: 15px;
+}
+
 /* Main Page */
 #div-intro {
     background:none;
