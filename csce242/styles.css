@@ -19,7 +19,7 @@ h1 {
     margin-right: auto;
     margin-bottom: 15px;
     border-radius: 2px;
-    width:15%;
+    width:40%;
     border: 5px var(--first-color);
     box-shadow:  0 0 0 2px var(--first-color);
 }
@@ -160,6 +160,10 @@ h2 {
 
     .four {
         flex: 4;
+    }
+
+    h1 {
+        width:15%;
     }
 
     #main-nav li {
