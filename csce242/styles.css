@@ -5,6 +5,18 @@
     --third-color:maroon;
 }
 
+.hidden {
+    display:none;
+}
+
+.block {
+    display:block;
+}
+
+.columns {
+    display:flex;
+}
+
 /* HEADER */
 header {
     padding-left: 15px;
@@ -47,8 +59,6 @@ div {
 h2 {
     padding-top: 4px;
     text-align:center;
-    text-decoration: underline;
-    
 }
 
 
@@ -144,6 +154,10 @@ h2 {
 @media only screen and (min-width:600px) { /* Applies to 600px and larger screen size */
     .columns {
         display:flex;
+    }
+
+    .hidden-small {
+        display:none;
     }
     
     .one { /* We are using this class to split the flex attribute eveninly and as a ration of 1:1 */
