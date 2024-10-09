@@ -1,0 +1,55 @@
+#main-body {
+    background-color:bisque;
+    text-align: center;
+    margin: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#main-div {
+    background-color:darkcyan;
+    color:palevioletred;
+    padding:7px;
+    text-align:center;
+}
+
+
+#flavor-div {
+    display:flex;
+    flex-wrap:wrap;
+    margin:10px;
+}
+
+.one {
+    position:relative;
+    flex-basis:25%;
+    align-items: center;
+}
+
+.flavor-img {
+    padding:5px;
+    max-width:100%;
+    max-height:90%;
+    display:block;
+    margin:auto;
+}
+
+.overlay {
+    position: absolute;
+    bottom:0;
+    background: rgba(0, 0, 0, 0.7);
+    color:white;
+    width:100%;
+    text-align:center;
+    opacity:0;
+}
+
+.one:hover .overlay {
+    opacity:1;
+}
+
+@media only screen and (min-width: 600px) {
+    .flavor-img {
+        max-width:100%;
+        max-height:100%;
+    }
+}
