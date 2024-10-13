@@ -101,6 +101,11 @@ h2 {
     border:none;
 }
 
+#assignments-h2:hover {
+    cursor:pointer;
+    color:black;
+}
+
 /* PROJECTS */
 #projects h2 {
     text-align:center;
@@ -136,7 +141,7 @@ h2 {
     color:var(--first-color);
 }
 
-#projects a:hover {
+#projects-outline a:hover {
     color:var(--third-color);
 }
 
@@ -144,6 +149,16 @@ h2 {
     background-color: var(--third-color);
     color: var(--third-color);
     border:none;
+}
+
+#projects-h2:hover {
+    cursor:pointer;
+    color:black;
+}
+
+#projects-h2-2:hover {
+    cursor:pointer;
+    color:black;
 }
 
 .temp-one {
