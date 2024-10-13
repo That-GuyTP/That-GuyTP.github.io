@@ -60,7 +60,7 @@ const ss_s = document.getElementById("state");
 const ss_c = document.getElementById("city");
 
 //Retrieve json file contents
-const ss_url = "https://github.com/That-GuyTP/That-GuyTP.github.io/blob/main/csce242/projects/part6/success-stories.json";
+const ss_url = "https://that-guytp.github.io/csce242/projects/part6/success-stories.json";
 const getStories = async() => {
     try {
         const response = await fetch(ss_url);
@@ -73,25 +73,27 @@ const getStories = async() => {
 
 const showStories = async() => {
     const stories = await getStories();
+    console.log(stories); // DEBUG
     stories.forEach((story) => {
-        console.log(stories);
+        console.log(stories); // DEBUG
         document.getElementById("success-stories-container").append(getStoriesSect(story));
     });
 };
 
 const getStoriesSect = (story) => {
     const sect = document.createElement("section");
+    console.log(story); // DEBUG
     sect.classList.add("ss-sect");
     
     //Fetch Img
-    const img = document.createElement("img");
-    img.src = `./images/${first_name},${last_name}`; 
-    img.classList.add("lifestyle-img");
-    sect.append(img);
+    const ss_img = document.createElement("img");
+    ss_img.src = `./images/${story.first_name}.jpg`; 
+    ss_img.classList.add("lifestyle-img");
+    sect.append(ss_img);
 
     //Fetch Name
     const h3 = document.createElement("h3");
-    h3.innerHTML = `<b>${story.first_name} ${story.last_name}</b>`
+    h3.innerHTML = `<b>${story.first_name} ${story.last_name}</b>`;
     sect.append(h3);
 
 
