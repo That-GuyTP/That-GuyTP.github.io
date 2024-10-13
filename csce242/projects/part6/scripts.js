@@ -80,7 +80,7 @@ const showStories = async() => {
 };
 
 const getStoriesSect = (story) => {
-    const sect = document.createElement("sect");
+    const sect = document.createElement("section");
     sect.classList.add("ss-sect");
     
     //Fetch Img
