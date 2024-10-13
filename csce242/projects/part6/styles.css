@@ -1,0 +1,462 @@
+/* USE DEV TOOLS TO MAKE SURE ALLIGNMENT OF SHAPES IS CORRECT IN PHONE AND WEBSITE DISPLAYS!!!*/
+
+:root {
+    --prim-color:#0D1130;
+    --sec-color:#E2CE28;
+    --bckgrd-color:#2A3162;
+    --nav-color:white;
+    --input-color:grey;
+}
+
+@font-face {
+    font-family: 'website-font';
+    src: url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+}
+
+.jost {
+    font-family: "Jost", system-ui;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.center {
+    text-align:center;
+}
+
+/* FORMAT & STYLES*/
+#main-html {
+    background-color:var(--bckgrd-color);
+    align-items: center;
+}
+
+body {
+    align-items: center;
+    color:var(--sec-color);
+    font-family: 'website-font';
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+p {
+    text-align:left;
+    font-size:19px;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+div {
+    background-color:var(--prim-color);
+    padding: 12px;
+    margin-bottom:10px;
+    border-radius:3px;
+}
+
+.star {
+    position: absolute;
+    color: var(--sec-color);
+    font-size: 20px;
+    z-index: -2;
+    background:none;
+}
+
+#star-printout {
+    position:relative;
+    background-color:none;
+    background:none;
+    max-width:100%;
+    height:100vh;
+    overflow:hidden;
+}
+
+/* Main Page */
+#div-intro {
+    background:none;
+}
+
+#portrait {
+    width: 400px;
+    height: 300px;
+    display:block;
+    margin:auto;
+}
+
+#quote {
+    font-size:20px;
+    color:var(--nav-color);
+    position:relative;
+    top:-40px;
+}
+
+#img-intro {
+    max-width:100%;
+    z-index: 2;
+}
+
+/* About Me */
+#bio {
+    position:relative;
+    top:70px;
+}
+
+#info-link {
+    color:var(--sec-color);
+}
+
+#info-link:hover {
+    color:var(--bckgrd-color);
+}
+
+#socials-list {
+    list-style-type: none;
+    padding-left:0;
+}
+
+/* Information */
+#symp-list{
+    font-size:19px;
+    text-align:left;
+}
+
+#symp-list li{
+    padding:7px;
+}
+
+#copyright {
+    font-size:10px;
+}
+
+.block {
+    display:flex;
+}
+
+#chart-img {
+    margin-top:5px;
+    max-height:100%;
+    max-width:100%;
+    margin-bottom:5px;
+}
+
+#long {
+    overflow-y:visible;
+}
+
+#buttons {
+    padding-left:0px;
+}
+
+#buttons li{
+    display:inline-block;
+    list-style-type: none;
+}
+
+
+/* Treatment */
+#life-list-container {
+    background-color: var(--bckgrd-color);
+}
+
+#life-list{
+    text-align: left;
+    font-size:25px;
+}
+
+#life-list li {
+    text-decoration: none;
+}
+
+#lifelist div{
+    margin:10px;
+}
+
+.lifestyle-img {
+    margin-top: 15px;
+    max-width: 100%;
+    margin-bottom:5px;
+}
+
+/* Support */
+.user-info {
+    width:270px;
+    height:30px;
+    font-style:italic;
+    color:var(--input-color);
+}
+
+section.one {
+    display: flex; /* Enable Flexbox */
+    justify-content: center; /* Horizontally center the images (if needed) */
+    align-items: center; /* Vertically center the images */
+    height:100%;
+}
+
+/* NAVIGATION */
+.nav ul{
+    padding:0px;
+    text-align:center;
+}
+
+.nav li{
+    list-style-type: none;
+    display:inline-block;
+    padding:0px;
+}
+
+.nav ul li:not(:last-child):after {
+    content: " | ";
+    color:var(--nav-color);
+    text-decoration:solid;
+}
+
+.nav a {
+    text-decoration: none;
+    color:var(--nav-color);
+}
+
+.nav a:hover {
+    background-color:var(--bckgrd-color);
+    color:var(--sec-color);
+}
+
+.second-nav {
+    position:relative;
+    top:10px;
+}
+
+#main-nav {
+    position:relative;
+    top:-70px;
+    z-index: 1;
+}
+
+/* SHAPES */
+.crescent-moon {
+	--w: 60px; /* Base Size */
+	--angle: -5deg; /* Rotation */
+	position: relative;
+	width: var(--w);
+	height: var(--w);
+}
+
+.crescent-moon::before {
+	content: "";
+	position: absolute;
+	top: 8.5%;
+	left: 30%;
+	width: calc(var(--w) / 1.4);
+	height: calc(var(--w) / 1.4);
+	border-radius: 50%;
+	/* Shape adjustment */
+	box-shadow: calc(var(--w) / (-6)) 0px 0px calc(var(--w) / 7) var(--sec-color);
+	transform: rotate(var(--angle));
+}
+
+#moon {
+    position:relative;
+    left: 280px;
+    bottom:65px;
+    animation: rise 1.7s ease-out forwards;
+    z-index:-100;
+}
+
+@keyframes rise {
+    0% {
+        bottom: -150px;
+    }
+
+    100% {
+        bottom: 65px;
+    }
+}
+
+/* Hill */
+.hill {
+    position:absolute;
+    z-index:-1;
+    height: 1000px;
+    width: 1000px;
+    background-color: var(--prim-color);
+    border-radius: 50%;
+    right:-260px;
+    bottom:-320px;
+}
+
+/* Buttons */
+.isClicked {
+    background: var(--sec-color);
+    color: var(--prim-color);
+    border: 1px solid var(--sec-color);
+    border-radius: 3px;
+}
+
+.notClicked {
+    background: var(--prim-color);
+    color:var(--nav-color);
+    border: 1px solid var(--nav-color);
+    border-radius: 3px;
+}
+
+.button-container {
+    margin-bottom:10px;
+    font-size:15px;
+}
+
+/* MEDIA QUERIES */
+/* Larger Resolutions */
+@media only screen and (min-width:600px) {
+    #main-html {
+        max-width:60%;
+        margin:auto;
+    }
+
+    .columns {
+        display:flex;
+    }
+
+    .columns .one button {
+        display: block;
+        margin: auto; /* add some margin between buttons */
+        margin-bottom: 10px;
+        font-size:20px;
+    }
+
+    .life-list {
+        font-size:20px;
+    }
+
+    .button-container {
+        margin-top:40px;
+    }
+
+    .one {
+        flex:1;
+    }
+
+    .two {
+        flex:2;
+        text-align:left;
+    }
+
+    .three {
+        flex:3;
+        text-align:left;
+        text-align: top;
+    }
+
+    /* Main-Page */
+    h1 {
+        font-size:69px;
+    }
+
+    #main-nav {
+        top:-100px;
+    }
+
+    .nav {
+        position:relative;
+        top:-30px;
+    }
+
+    #div-intro {
+        position:relative;
+        bottom:10px;
+        left:160px;
+        max-width:70%;
+    }
+
+    #div-img {
+        position:relative;
+        bottom:-100px;
+        margin-bottom:5px;
+    }
+
+    #quote {
+        position:relative;
+        top:-70px;
+    }
+
+    #img-intro {
+        position:relative;
+        bottom:145px;
+        max-width:60%;
+        height:390px;
+        display:block;
+        margin-left:auto;
+        margin-right:auto;
+        overflow-y:visible;
+        z-index: 1;
+    }
+
+    @keyframes rise {
+        0% {
+            bottom: -150px;
+        }
+    
+        100% {
+            bottom: 110px;
+        }
+    }
+
+    #moon {
+        left: 651px;
+        bottom:100px;
+    }
+
+    .hill {
+        width:2000px;
+        height:1900px;
+        top:300px;
+        right:-38px;
+    }
+
+    /* About Me */
+    #bio {
+        top:0px;
+    }
+
+    /* Info */
+    #button{ /* Can't seem to get these guys to vertically align. */
+        display:none;
+    }
+
+    /* Treatment */
+    .life-list {
+        display:flex;
+        flex-wrap:wrap;
+        background-color: var(--bckgrd-color);
+    }
+    
+    .lifestyle-img {
+        margin-top: 15px;
+        width: 400px;
+        height: 300px;
+        display:block;
+        margin-left:auto;
+        margin-right:auto;
+        margin-bottom:5px;
+    }
+
+    .life-list-item {
+        margin:5px;
+        flex:40%;
+    }
+
+
+    /* Support */
+    .support-img {
+        margin-right:5px;
+        margin-bottom:10px;
+        max-height:90%;
+        height:90%;
+        max-width:90%;
+        width:90%;
+        padding: 6px;
+    }
+
+}
