@@ -60,7 +60,7 @@ const ss_s = document.getElementById("state");
 const ss_c = document.getElementById("city");
 
 //Retrieve json file contents
-const ss_url = "https://that-guytp.github.io/csce242/projects/part6/success-stories.json";
+const ss_url = "https://github.com/That-GuyTP/That-GuyTP.github.io/blob/main/csce242/projects/part6/success-stories.json";
 const getStories = async() => {
     try {
         const response = await fetch(ss_url);
