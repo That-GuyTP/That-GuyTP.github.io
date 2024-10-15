@@ -102,6 +102,10 @@ h1 {
   color: var(--primary);
 }
 
+h2 {
+  color: var(--primary);
+}
+
 h3 {
   color: var(--primary);
   text-align: center;
