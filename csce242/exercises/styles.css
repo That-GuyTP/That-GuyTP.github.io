@@ -1,0 +1,182 @@
+:root {
+  /*
+  --primary: coral;
+  --secondary: cornflowerblue;
+  */
+  --primary: #008080;
+  --secondary: #FF7F50;
+  --background: #F5FFFA;
+  --accent: #FFD700;
+  --text: #2F4F4F;
+}
+
+/* Structure */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background);
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  margin:0;
+}
+
+main {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  width:100%;
+}
+
+header {
+  width:100%;
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+}
+/* Navigation */
+#main-nav ul {
+  padding-left: 0px;
+  list-style-type: none;
+}
+
+#main-nav li {
+  background: var(--secondary);
+  padding: 10px;
+  margin: 2px 0;
+}
+
+#main-nav a {
+  text-decoration: none;
+  color: var(--text);
+}
+
+/* Hamburger Menu */
+#nav-toggle div {
+  width: 35px;
+  height: 5px;
+  background-color: var(--primary);
+  margin: 6px 0;
+}
+
+/* Typography */
+#main-nav-items {
+  font-size: 1.2em;
+}
+
+#main-nav-items a:hover {
+  border-bottom: 2px solid var(--accent);
+}
+
+.hidden {
+  display: none;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+#square {
+  --x: 100px;
+  width: var(--x);
+  height: var(--x);
+  margin-top: 10px;
+  background-color: blueviolet;
+}
+
+.ingre {
+  background:var(--primary);
+}
+
+.ingre p {
+  color:white;
+}
+
+.drink {
+  background: #fff;
+  padding: 5px;
+  margin: 5px;
+}
+
+h1 {
+  color: var(--primary);
+}
+
+h3 {
+  color: var(--primary);
+  text-align: center;
+}
+
+.drink {
+  background: #fff;
+  padding: 5px;
+  margin: 5px;
+  border: 2px solid var(--accent);
+}
+
+button {
+  background-color: var(--primary);
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+button:hover {
+  background-color: var(--secondary);
+}
+
+
+.drink img {
+  max-width: 40%;
+  display: block;
+  margin: auto;
+}
+
+.one p {
+  margin: 10px;
+  padding: 5px;
+  display: inline-block;
+  font-size: 1.2em;
+  color: var(--text-color);
+}
+
+.one {
+  margin:3px;
+  border-radius: 2px;
+}
+
+.one:hover {
+  cursor:pointer;
+  color: var(--secondary)
+}
+
+/* Larger Resolutions */
+@media (min-width: 900px) {
+  #main-nav-items li {
+    flex: 1;
+  }
+
+  #main-nav-items a {
+    border-bottom: 2px solid transparent;
+  }
+
+  #main-nav-items a:hover {
+    border-bottom: 2px solid var(--primary);
+  }
+
+  #nav-toggle {
+    display: none;
+  }
+
+  .columns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .drink {
+    flex: 30%;
+  }
+}
