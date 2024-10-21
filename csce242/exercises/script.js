@@ -42,9 +42,9 @@ const getIngreDiv = (ingre) => {
 showIngres();
 
 /*The concept of this is:
-    1. Create a main array to store the filters
+    1. Create a main array to store the selected filters.
     2. For each filter fetch the info from the api url.
-    3. Add that info to the array index for the filter.
+    3. Add the list of drinks for each filter in the array.
     4. When printing out the filter's info, check if there are matching infos for each array and only print those.
     5. Success.
 * TLDR: Filters the drinks based on the selected ingredients.
@@ -65,7 +65,7 @@ const getIngreFilter = async() => {
             const response = await fetch(url);
             const result = await response.json();
 
-            if (commonDrinks === null) {
+            if (commonDrinks == null) {
                 commonDrinks = result.drinks;
             } else {
                 commonDrinks = commonDrinks.filter(drink => 
@@ -80,7 +80,7 @@ const getIngreFilter = async() => {
     return commonDrinks;
 };
 
-//Basically dispalys the filtered drinks with their details
+//Basically dispalys the filtered drinks with their details. It's like the standard "add to div" function we'd use to import an details of an api.
 const showIngreFilter = async() => {
     const filters = await getIngreFilter();
     const filterDiv = document.getElementById("filter");
@@ -88,7 +88,7 @@ const showIngreFilter = async() => {
     // Clear previous results
     filterDiv.innerHTML = '';
 
-    if (!filters || filters.length === 0) {
+    if (!filters || filters.length == 0) {
         filterDiv.innerHTML = '<p>No drinks found for selected ingredients.</p>';
         return;
     }
