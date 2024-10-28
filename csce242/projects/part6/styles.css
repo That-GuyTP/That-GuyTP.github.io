@@ -196,6 +196,30 @@ section.one {
     height:100%;
 }
 
+#form-email-inputs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:auto;
+}
+
+#form-email-inputs input {
+    margin:10px;
+}
+
+#form-email button {
+    display:flex;
+    justify-content: center;
+    margin:auto;
+}
+
+#form-success-story {
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center children horizontally */
+    margin: auto; /* Center the form itself */
+}
+
 /* NAVIGATION */
 .nav ul{
     padding:0px;
@@ -415,11 +439,7 @@ section.one {
         right:-38px;
     }
 
-    /* About Me */
-    #bio {
-        top:0px;
-    }
-
+   
     /* Info */
     #button{ /* Can't seem to get these guys to vertically align. */
         display:none;

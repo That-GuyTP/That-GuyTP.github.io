@@ -17,31 +17,50 @@
     </head>
     <body id="long" class="jost">
         <div>
-            <p>All support is greatly appreciated. If you'd like to be kept up to date with all narcolepsy related news please enter your email here:</p>
-            <input type="text" id="email" class="user-info" value="Email"> <br>
+            <form id="form-email" action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="15d2a7d7-a1e7-4622-b5fa-74c4454f2692"/>
+                <p>All support is greatly appreciated. If you'd like to be kept up to date with all narcolepsy related news please enter your email here:</p>
+                <section id="form-email-inputs">
+                    <label for="name">Name: </label>
+                    <input id="name" type="text" placeholder="Last, First" name="name" required/>
+
+                    <label for="email">Email:</label>
+                    <input id="email" type="email" name="email" placeholder="example@email.com" required /><br>
+
+                    <input type="hidden" name="redirect" value="https://web3forms.com/success" />
+                    <input type="hidden" name="subject" value="Contact from Knowing Narcolepsy"/>
+                    <input type="hidden" name="from_name" value="My Website"/>
+                </section>
+                <button type="submit">Submit</button>
+                <p id="result"></p>
+                
+            </form>
+            
         </div>
         <div>
-            <h2>Success Stories</h2>
-            <label></label>
-            <input type="text" id="first-name" class="user-info" value=""> <br>
+            <form id="form-success-story">
+                <h2>Success Stories</h2>
+                <label></label>
+                <input type="text" id="first-name" class="user-info" placeholder="First Name" value=""> <br>
 
-            <label></label>
-            <input type="text" id="last-name" class="user-info" value=""> <br>
-            
-            <label></label>
-            <input type="text" id="date_diagnosed" class="user-info" value=""> <br>
+                <label></label>
+                <input type="text" id="last-name" class="user-info" placeholder="Last Name" value=""> <br>
+                
+                <label></label>
+                <input type="text" id="date_diagnosed" class="user-info" placeholder="Date Diagnosed" value=""> <br>
 
-            <label></label>
-            <input type="text" id="type_of_narcolepsy" class="user-info" value=""> <br>
+                <label></label>
+                <input type="text" id="type_of_narcolepsy" class="user-info" placeholder="Type of Narcolepsy" value=""> <br>
 
-            <label></label>
-            <input type="text" id="user_text" class="user-info" value=""> <br>
+                <label></label>
+                <input type="text" id="user_text" class="user-info" placeholder="Your Story" value=""> <br>
 
-            <label></label>
-            <input type="text" id="state" class="user-info" value=""> <br>
+                <label></label>
+                <input type="text" id="state" class="user-info" placeholder="State" value=""> <br>
 
-            <label></label>
-            <input type="text" id="city" class="user-info" value=""> <br>
+                <label></label>
+                <input type="text" id="city" class="user-info" placeholder="City" value=""> <br>
+            </form>
         </div>
         <div>
             <section class="columns">
