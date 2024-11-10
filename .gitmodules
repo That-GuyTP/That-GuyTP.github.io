@@ -1,0 +1,3 @@
+[submodule "path_to_submodule"]
+  path = ./CSCE247-TheCoolCoders-LoveLearningLangs"
+  url = git://CSCE247-TheCoolCoders-LoveLearningLangs/
