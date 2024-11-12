@@ -1,3 +1,6 @@
 [submodule "Knowing-Narcolepsy"]
 	path = Knowing-Narcolepsy
 	url = https://github.com/That-GuyTP/Knowing-Narcolepsy.git
+[submodule "Knowing-Narcolepsy-Backend"]
+	path = Knowing-Narcolepsy-Backend
+	url = https://github.com/That-GuyTP/Knowing-Narcolepsy-Backend.git
