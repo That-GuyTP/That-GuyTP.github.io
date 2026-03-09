@@ -120,6 +120,7 @@ a {
 .hero-card,
 .info-card,
 .project-card,
+.module-card,
 .control-bar {
   background: var(--bg-panel);
   border: 1px solid var(--line);
@@ -170,6 +171,54 @@ a {
   display: grid;
   gap: 0.9rem;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.module-panel {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.module-grid {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.module-card {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(180px, 240px) 1fr;
+  align-items: start;
+}
+
+.module-thumb-link {
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.module-thumb-link img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.module-body h3 {
+  margin: 0 0 0.4rem;
+}
+
+.module-body a {
+  color: var(--accent-a);
+  text-decoration: none;
+}
+
+.module-body a:hover {
+  color: var(--accent-b);
+}
+
+.module-body p {
+  margin: 0;
+  color: var(--ink-muted);
 }
 
 .info-card h3,
@@ -345,6 +394,10 @@ a {
   .control-bar,
   .content-grid,
   .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .module-card {
     grid-template-columns: 1fr;
   }
 }

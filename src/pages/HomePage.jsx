@@ -1,3 +1,5 @@
+import knowingNarcolepsyThumbnail from '../images/KnowingNarcolepsyThumbnail.png';
+
 const focusAreas = [
   {
     title: 'Software Development',
@@ -13,6 +15,15 @@ const focusAreas = [
     title: 'Project Execution',
     description:
       'Turning ideas into working deliverables through iterative testing, feedback, and deployment.'
+  }
+];
+
+const modules = [
+  {
+    title: 'Knowing Narcolepsy',
+    link: 'https://that-guytp.github.io/Knowing-Narcolepsy/',
+    thumbnail: knowingNarcolepsyThumbnail,
+    description: 'Add a short description for this module here.'
   }
 ];
 
@@ -35,6 +46,33 @@ export default function HomePage() {
             <p>{item.description}</p>
           </article>
         ))}
+      </div>
+
+      <div className="module-panel">
+        <p className="eyebrow">Featured Module</p>
+        <div className="module-grid">
+          {modules.map((module) => (
+            <article key={module.title} className="module-card">
+              <a
+                className="module-thumb-link"
+                href={module.link}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`Open ${module.title}`}
+              >
+                <img src={module.thumbnail} alt={`${module.title} thumbnail`} />
+              </a>
+              <div className="module-body">
+                <h3>
+                  <a href={module.link} target="_blank" rel="noreferrer">
+                    {module.title}
+                  </a>
+                </h3>
+                <p>{module.description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
