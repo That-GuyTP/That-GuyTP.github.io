@@ -35,7 +35,7 @@ export default function HomePage() {
         <h2>Welcome to my coding work hub.</h2>
         <p>
           I am Thomas Peterson, a CIS major at USC. This site introduces who I am, highlights Java
-          project demos through a live API integration, and organizes supporting documents in one place.
+          and non-Java portfolio projects, and organizes supporting documents in one place.
         </p>
       </div>
 

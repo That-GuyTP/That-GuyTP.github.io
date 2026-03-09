@@ -1,7 +1,8 @@
 import { Navigate, NavLink, Outlet, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
-import JavaProjectsPage from './pages/JavaProjectsPage';
+import ProjectsPage from './pages/ProjectsPage';
 import DocumentsPage from './pages/DocumentsPage';
+import GamesCoolProgramsPage from './pages/GamesCoolProgramsPage';
 
 function SiteLayout() {
   return (
@@ -19,7 +20,10 @@ function SiteLayout() {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/java-projects">Java Projects</NavLink>
+              <NavLink to="/projects">Projects</NavLink>
+            </li>
+            <li>
+              <NavLink to="/games-cool-programs">Games &amp; Cool Programs</NavLink>
             </li>
             <li>
               <NavLink to="/documents">Documents</NavLink>
@@ -44,7 +48,9 @@ export default function App() {
     <Routes>
       <Route path="/" element={<SiteLayout />}>
         <Route index element={<HomePage />} />
-        <Route path="java-projects" element={<JavaProjectsPage />} />
+        <Route path="projects" element={<ProjectsPage />} />
+        <Route path="java-projects" element={<Navigate replace to="/projects" />} />
+        <Route path="games-cool-programs" element={<GamesCoolProgramsPage />} />
         <Route path="documents" element={<DocumentsPage />} />
         <Route path="*" element={<Navigate replace to="/" />} />
       </Route>
