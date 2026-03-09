@@ -1,7 +1,18 @@
+import { Link } from 'react-router-dom';
+
 const gamesAndPrograms = [
+  {
+    title: 'SortSorter',
+    to: '/games-cool-programs/sortsorter',
+    language: 'Java',
+    description:
+      'Playable module ported from your Java SortSorter backend files. Add words and sort them by "sort" match count.',
+    tags: ['Playable Now', 'Original Source Linked', 'Algorithm']
+  },
   {
     title: 'Single-Page Java App Migration',
     link: '',
+    language: 'Java',
     description:
       'Move legacy Java app concepts behind a backend service so each one can be played in the browser.',
     tags: ['Java to Web', 'Backend + Frontend']
@@ -46,7 +57,9 @@ export default function GamesCoolProgramsPage() {
           <article key={program.title} className="project-card">
             <div className="project-head">
               <h3>{program.title}</h3>
-              {program.link ? (
+              {program.to ? (
+                <Link to={program.to}>Play</Link>
+              ) : program.link ? (
                 <a href={program.link} target="_blank" rel="noreferrer">
                   Play
                 </a>
@@ -54,6 +67,11 @@ export default function GamesCoolProgramsPage() {
                 <span className="project-link-placeholder">Deploying Soon</span>
               )}
             </div>
+            {program.language && (
+              <p className="project-language">
+                Language: <span>{program.language}</span>
+              </p>
+            )}
             <p>{program.description}</p>
             <div className="project-metrics">
               {program.tags.map((tag) => (

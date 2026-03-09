@@ -3,6 +3,7 @@ import HomePage from './pages/HomePage';
 import ProjectsPage from './pages/ProjectsPage';
 import DocumentsPage from './pages/DocumentsPage';
 import GamesCoolProgramsPage from './pages/GamesCoolProgramsPage';
+import SortSorterPage from './pages/SortSorterPage';
 
 function SiteLayout() {
   return (
@@ -51,6 +52,7 @@ export default function App() {
         <Route path="projects" element={<ProjectsPage />} />
         <Route path="java-projects" element={<Navigate replace to="/projects" />} />
         <Route path="games-cool-programs" element={<GamesCoolProgramsPage />} />
+        <Route path="games-cool-programs/sortsorter" element={<SortSorterPage />} />
         <Route path="documents" element={<DocumentsPage />} />
         <Route path="*" element={<Navigate replace to="/" />} />
       </Route>

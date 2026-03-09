@@ -267,6 +267,17 @@ a {
   color: var(--ink-muted);
 }
 
+.project-language {
+  margin: 0 0 0.55rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.82rem;
+}
+
+.project-language span {
+  color: var(--ink-strong);
+  font-weight: 500;
+}
+
 .info-card a,
 .project-head a {
   display: inline-block;
@@ -354,6 +365,113 @@ a {
   color: #83231a;
 }
 
+.sortsorter-panel {
+  display: grid;
+  gap: 0.75rem;
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+}
+
+.sortsorter-input-row {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+}
+
+.sortsorter-input-row label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+}
+
+.sortsorter-input-row input {
+  width: 100%;
+  font: inherit;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 0.5rem 0.6rem;
+  background: #ffffff;
+  color: var(--ink-strong);
+}
+
+.sortsorter-input-row input:focus {
+  outline: 2px solid rgba(15, 139, 141, 0.35);
+  outline-offset: 1px;
+}
+
+.sortsorter-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.sortsorter-secondary-button {
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 0.58rem 0.8rem;
+  font: inherit;
+  font-weight: 700;
+  color: var(--ink-strong);
+  background: #ffffff;
+  cursor: pointer;
+  transition: border-color 150ms ease, color 150ms ease;
+}
+
+.sortsorter-secondary-button:hover {
+  border-color: var(--accent-a);
+  color: var(--accent-a);
+}
+
+.sortsorter-columns {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.sortsorter-list ol {
+  margin: 0.4rem 0 0;
+  padding-left: 1.25rem;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.sortsorter-list li {
+  color: var(--ink-strong);
+}
+
+.sortsorter-source-links {
+  margin-top: 0.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.sortsorter-source-links a {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--accent-a);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.28rem 0.6rem;
+  font-size: 0.85rem;
+}
+
+.sortsorter-source-links a:hover {
+  color: var(--accent-b);
+  border-color: var(--accent-a);
+}
+
+.sortsorter-count {
+  margin-left: 0.45rem;
+  color: var(--ink-muted);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+}
+
 .project-grid {
   display: grid;
   gap: 0.9rem;
@@ -429,6 +547,11 @@ a {
   .control-bar,
   .content-grid,
   .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sortsorter-columns,
+  .sortsorter-input-row {
     grid-template-columns: 1fr;
   }
 
