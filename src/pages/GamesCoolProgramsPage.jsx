@@ -47,8 +47,7 @@ export default function GamesCoolProgramsPage() {
         <p className="eyebrow">Games &amp; Cool Programs</p>
         <h2>Playable and interactive program ideas</h2>
         <p>
-          Use this section for game-focused demos and cool programs you deploy from backend-supported
-          projects.
+          This page is where were you can interact with applications I've created over the years. They are hosted on a backend, but are currently till being worked on.
         </p>
       </div>
 

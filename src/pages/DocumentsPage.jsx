@@ -1,45 +1,82 @@
+import { useState } from 'react';
+import cvFile from '../images/personal_documents/Thomas Peterson - CV.pdf';
+import transcriptFile from '../images/personal_documents/Thomas Peterson - Unofficial Transcript.pdf';
+
 const documents = [
   {
-    title: 'Resume Notes',
-    description: 'Editable text placeholder for resume highlights and updates.',
-    fileName: 'resume-notes.txt'
+    id: 'cv',
+    title: 'Curriculum Vitae',
+    description: 'Professional background, projects, and skills summary.',
+    fileUrl: cvFile,
+    fileName: 'Thomas Peterson - CV.pdf'
   },
   {
-    title: 'Coursework Summary',
-    description: 'Quick summary of courses, outcomes, and applied technologies.',
-    fileName: 'coursework-summary.md'
-  },
-  {
-    title: 'Project Intake Template',
-    description: 'Template for collecting requirements before starting a new build.',
-    fileName: 'project-intake-template.md'
+    id: 'transcript',
+    title: 'Unofficial Transcript',
+    description: 'Academic record and completed coursework.',
+    fileUrl: transcriptFile,
+    fileName: 'Thomas Peterson - Unofficial Transcript.pdf'
   }
 ];
 
 export default function DocumentsPage() {
-  const baseUrl = import.meta.env.BASE_URL;
+  const [openPreviews, setOpenPreviews] = useState({});
+
+  const togglePreview = (id) => {
+    setOpenPreviews((previous) => ({
+      ...previous,
+      [id]: !previous[id]
+    }));
+  };
 
   return (
     <section className="page-panel">
       <div className="hero-card">
         <p className="eyebrow">Documents</p>
-        <h2>Supporting files and references</h2>
-        <p>
-          Use this page to host resumes, project writeups, PDF notes, and any additional documentation you
-          want to share.
-        </p>
+        <h2>CV and transcript</h2>
+        <p>Download each file directly, or expand the arrow to preview the PDF on this page.</p>
       </div>
 
-      <div className="content-grid">
-        {documents.map((doc) => (
-          <article key={doc.fileName} className="info-card">
-            <h3>{doc.title}</h3>
-            <p>{doc.description}</p>
-            <a href={`${baseUrl}docs/${doc.fileName}`} target="_blank" rel="noreferrer">
-              Open Document
-            </a>
-          </article>
-        ))}
+      <div className="documents-grid">
+        {documents.map((doc) => {
+          const isPreviewOpen = Boolean(openPreviews[doc.id]);
+          const previewId = `document-preview-${doc.id}`;
+
+          return (
+            <article key={doc.id} className="info-card document-card">
+              <div className="document-head">
+                <div>
+                  <h3>{doc.title}</h3>
+                  <p>{doc.description}</p>
+                </div>
+
+                <div className="document-actions">
+                  <a className="document-download" href={doc.fileUrl} download={doc.fileName}>
+                    Download
+                  </a>
+                  <button
+                    type="button"
+                    className="document-toggle"
+                    onClick={() => togglePreview(doc.id)}
+                    aria-expanded={isPreviewOpen}
+                    aria-controls={previewId}
+                    aria-label={`${isPreviewOpen ? 'Hide' : 'Show'} ${doc.title} preview`}
+                  >
+                    <span className={`document-arrow ${isPreviewOpen ? 'open' : ''}`} aria-hidden="true">
+                      v
+                    </span>
+                  </button>
+                </div>
+              </div>
+
+              {isPreviewOpen && (
+                <div id={previewId} className="document-preview">
+                  <iframe src={doc.fileUrl} title={`${doc.title} preview`} loading="lazy" />
+                </div>
+              )}
+            </article>
+          );
+        })}
       </div>
     </section>
   );
