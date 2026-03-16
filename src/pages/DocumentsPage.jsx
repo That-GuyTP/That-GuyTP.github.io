@@ -13,7 +13,7 @@ const documents = [
   {
     id: 'transcript',
     title: 'Unofficial Transcript',
-    description: 'Academic record and completed coursework.',
+    description: 'Academic record and completed coursework. For the official transcript, please email me at ThomasAPeterson.Business@gmail.com',
     fileUrl: transcriptFile,
     fileName: 'Thomas Peterson - Unofficial Transcript.pdf'
   }

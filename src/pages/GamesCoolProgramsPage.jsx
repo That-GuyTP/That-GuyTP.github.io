@@ -10,33 +10,36 @@ const gamesAndPrograms = [
     tags: ['Playable Now', 'Original Source Linked', 'Algorithm']
   },
   {
-    title: 'Single-Page Java App Migration',
-    link: '',
+    title: 'Distance & Velocity Calculator',
+    to: '/games-cool-programs/distance-velocity-calculator',
     language: 'Java',
     description:
-      'Move legacy Java app concepts behind a backend service so each one can be played in the browser.',
-    tags: ['Java to Web', 'Backend + Frontend']
+      'Calculate final velocity and distance traveled from an initial velocity and elapsed time.',
+    tags: ['Playable Now', 'Physics Utility', 'Formula Calculator']
   },
   {
-    title: 'Arcade Prototype',
-    link: '',
+    title: 'Triangle Maker',
+    to: '/games-cool-programs/triangle-maker',
+    language: 'Java',
     description:
-      'Browser-playable mini-game collection for quick demos of controls, scoring, and state handling.',
-    tags: ['Game Build', 'Deploying Soon']
+      'Generate an up-and-down star triangle by entering a height, mirroring your Java loop logic.',
+    tags: ['Playable Now', 'Pattern Builder', 'Loop Practice']
   },
   {
-    title: 'Algorithm Visualizer',
-    link: '',
+    title: 'Rock Paper Scissors',
+    to: '/games-cool-programs/rock-paper-scissors',
+    language: 'Java',
     description:
-      'Interactive visual tool for exploring data structures and algorithm steps with live controls.',
-    tags: ['Educational Tool', 'Planned']
+      'Best-of-three Rock Paper Scissors with match history and the same scoring behavior as your Java version.',
+    tags: ['Playable Now', 'Game', 'Randomized']
   },
   {
-    title: 'Utility Sandbox',
-    link: '',
+    title: 'Morning Routine Adventure',
+    to: '/games-cool-programs/morning-routine-adventure',
+    language: 'Java',
     description:
-      'Collection of cool, practical mini-programs packaged into one interface for experimentation.',
-    tags: ['Program Suite', 'In Progress']
+      'Choose-your-own-adventure recreation with branching decisions and multiple endings to discover.',
+    tags: ['Playable Now', 'Story Branches', 'Interactive']
   }
 ];
 
@@ -47,7 +50,8 @@ export default function GamesCoolProgramsPage() {
         <p className="eyebrow">Games &amp; Cool Programs</p>
         <h2>Playable and interactive program ideas</h2>
         <p>
-          This page is where were you can interact with applications I've created over the years. They are hosted on a backend, but are currently till being worked on.
+          This page includes interactive Java program ports from your backend app collection so each one
+          can be played directly in the browser.
         </p>
       </div>
 

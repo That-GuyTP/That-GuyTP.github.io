@@ -562,6 +562,110 @@ a {
   font-size: 0.78rem;
 }
 
+.program-panel {
+  display: grid;
+  gap: 0.75rem;
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+}
+
+.program-form-grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: end;
+}
+
+.program-form-grid label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+}
+
+.program-form-grid input {
+  width: 100%;
+  font: inherit;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 0.5rem 0.6rem;
+  background: #ffffff;
+  color: var(--ink-strong);
+}
+
+.program-form-grid input:focus {
+  outline: 2px solid rgba(15, 139, 141, 0.35);
+  outline-offset: 1px;
+}
+
+.program-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.program-results-grid {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.program-output {
+  margin: 0.5rem 0 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #ffffff;
+  padding: 0.75rem 0.85rem;
+  color: var(--ink-strong);
+}
+
+.triangle-output {
+  font-family: 'IBM Plex Mono', monospace;
+  white-space: pre;
+  overflow-x: auto;
+}
+
+.choice-row {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.rps-history {
+  margin: 0.5rem 0 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.4rem;
+  color: var(--ink-strong);
+}
+
+.story-prompt {
+  margin: 0;
+  color: var(--ink-strong);
+  font-weight: 500;
+}
+
+.story-choice-grid {
+  margin-top: 0.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.story-log {
+  margin: 0.5rem 0 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.4rem;
+  color: var(--ink-strong);
+  max-height: 320px;
+  overflow: auto;
+}
+
 .project-grid {
   display: grid;
   gap: 0.9rem;
@@ -646,7 +750,9 @@ a {
   }
 
   .sortsorter-columns,
-  .sortsorter-input-row {
+  .sortsorter-input-row,
+  .program-form-grid,
+  .program-results-grid {
     grid-template-columns: 1fr;
   }
 
