@@ -351,14 +351,14 @@ export default function EquationCheckerPage() {
         <article className="project-card">
           <h3>Left Side Value</h3>
           <p className="program-output">
-            {result?.leftValue === null ? 'Run a check to view output.' : formatNumber(result.leftValue)}
+            {result?.leftValue == null ? 'Run a check to view output.' : formatNumber(result.leftValue)}
           </p>
         </article>
 
         <article className="project-card">
           <h3>Right Side Value</h3>
           <p className="program-output">
-            {result?.rightValue === null
+            {result?.rightValue == null
               ? 'Run a check to view output.'
               : formatNumber(result.rightValue)}
           </p>
