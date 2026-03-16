@@ -117,13 +117,6 @@ export default function GamesCoolProgramsPage() {
                   {program.title}
                 </button>
               </h3>
-              <button
-                type="button"
-                className="program-launch-link"
-                onClick={() => openProgram(program.id)}
-              >
-                Play
-              </button>
             </div>
             {program.language && (
               <p className="project-language">
