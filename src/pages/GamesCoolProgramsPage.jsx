@@ -4,8 +4,18 @@ import DistanceVelocityCalculatorPage from './DistanceVelocityCalculatorPage';
 import TriangleMakerPage from './TriangleMakerPage';
 import RockPaperScissorsPage from './RockPaperScissorsPage';
 import MorningRoutineAdventurePage from './MorningRoutineAdventurePage';
+import EquationCheckerPage from './EquationCheckerPage';
 
 const gamesAndPrograms = [
+  {
+    id: 'equation-checker',
+    title: 'Equation Checker',
+    language: 'C++',
+    description:
+      'Check whether both sides of an equation are equal, including arithmetic and parentheses handling.',
+    tags: ['Playable Now', 'C++', 'Math Parser'],
+    component: EquationCheckerPage
+  },
   {
     id: 'sortsorter',
     title: 'SortSorter',

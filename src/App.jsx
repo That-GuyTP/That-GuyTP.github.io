@@ -8,6 +8,7 @@ import DistanceVelocityCalculatorPage from './pages/DistanceVelocityCalculatorPa
 import TriangleMakerPage from './pages/TriangleMakerPage';
 import RockPaperScissorsPage from './pages/RockPaperScissorsPage';
 import MorningRoutineAdventurePage from './pages/MorningRoutineAdventurePage';
+import EquationCheckerPage from './pages/EquationCheckerPage';
 
 function SiteLayout() {
   return (
@@ -56,6 +57,7 @@ export default function App() {
         <Route path="projects" element={<ProjectsPage />} />
         <Route path="java-projects" element={<Navigate replace to="/projects" />} />
         <Route path="games-cool-programs" element={<GamesCoolProgramsPage />} />
+        <Route path="games-cool-programs/equation-checker" element={<EquationCheckerPage />} />
         <Route path="games-cool-programs/sortsorter" element={<SortSorterPage />} />
         <Route
           path="games-cool-programs/distance-velocity-calculator"

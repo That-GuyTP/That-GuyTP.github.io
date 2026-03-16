@@ -467,6 +467,16 @@ a {
   color: #83231a;
 }
 
+.status-line.warning {
+  border-color: #e6b14b;
+  color: #925f04;
+}
+
+.status-line.success {
+  border-color: #6ebf7f;
+  color: #1f6f31;
+}
+
 .sortsorter-panel {
   display: grid;
   gap: 0.75rem;
@@ -610,6 +620,10 @@ a {
 .program-form-grid input:focus {
   outline: 2px solid rgba(15, 139, 141, 0.35);
   outline-offset: 1px;
+}
+
+.equation-checker-form {
+  grid-template-columns: 1fr;
 }
 
 .program-actions {
