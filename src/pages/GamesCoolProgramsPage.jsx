@@ -1,74 +1,129 @@
-import { Link } from 'react-router-dom';
+import { useEffect, useMemo, useState } from 'react';
+import SortSorterPage from './SortSorterPage';
+import DistanceVelocityCalculatorPage from './DistanceVelocityCalculatorPage';
+import TriangleMakerPage from './TriangleMakerPage';
+import RockPaperScissorsPage from './RockPaperScissorsPage';
+import MorningRoutineAdventurePage from './MorningRoutineAdventurePage';
 
 const gamesAndPrograms = [
   {
+    id: 'sortsorter',
     title: 'SortSorter',
-    to: '/games-cool-programs/sortsorter',
     language: 'Java',
     description:
       'Playable module ported from your Java SortSorter backend files. Add words and sort them by "sort" match count.',
-    tags: ['Playable Now', 'Original Source Linked', 'Algorithm']
+    tags: ['Playable Now', 'Original Source Linked', 'Algorithm'],
+    component: SortSorterPage
   },
   {
+    id: 'distance-velocity-calculator',
     title: 'Distance & Velocity Calculator',
-    to: '/games-cool-programs/distance-velocity-calculator',
     language: 'Java',
     description:
       'Calculate final velocity and distance traveled from an initial velocity and elapsed time.',
-    tags: ['Playable Now', 'Physics Utility', 'Formula Calculator']
+    tags: ['Playable Now', 'Physics Utility', 'Formula Calculator'],
+    component: DistanceVelocityCalculatorPage
   },
   {
+    id: 'triangle-maker',
     title: 'Triangle Maker',
-    to: '/games-cool-programs/triangle-maker',
     language: 'Java',
     description:
       'Generate an up-and-down star triangle by entering a height, mirroring your Java loop logic.',
-    tags: ['Playable Now', 'Pattern Builder', 'Loop Practice']
+    tags: ['Playable Now', 'Pattern Builder', 'Loop Practice'],
+    component: TriangleMakerPage
   },
   {
+    id: 'rock-paper-scissors',
     title: 'Rock Paper Scissors',
-    to: '/games-cool-programs/rock-paper-scissors',
     language: 'Java',
     description:
       'Best-of-three Rock Paper Scissors with match history and the same scoring behavior as your Java version.',
-    tags: ['Playable Now', 'Game', 'Randomized']
+    tags: ['Playable Now', 'Game', 'Randomized'],
+    component: RockPaperScissorsPage
   },
   {
+    id: 'morning-routine-adventure',
     title: 'Morning Routine Adventure',
-    to: '/games-cool-programs/morning-routine-adventure',
     language: 'Java',
     description:
       'Choose-your-own-adventure recreation with branching decisions and multiple endings to discover.',
-    tags: ['Playable Now', 'Story Branches', 'Interactive']
+    tags: ['Playable Now', 'Story Branches', 'Interactive'],
+    component: MorningRoutineAdventurePage
   }
 ];
 
 export default function GamesCoolProgramsPage() {
+  const [activeProgramId, setActiveProgramId] = useState(null);
+
+  const activeProgram = useMemo(
+    () => gamesAndPrograms.find((program) => program.id === activeProgramId) ?? null,
+    [activeProgramId]
+  );
+
+  const ActiveProgramComponent = activeProgram?.component ?? null;
+
+  useEffect(() => {
+    if (!activeProgram) {
+      return undefined;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+
+    function handleKeyDown(event) {
+      if (event.key === 'Escape') {
+        setActiveProgramId(null);
+      }
+    }
+
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [activeProgram]);
+
+  function openProgram(programId) {
+    setActiveProgramId(programId);
+  }
+
+  function closeProgram() {
+    setActiveProgramId(null);
+  }
+
   return (
     <section className="page-panel">
       <div className="hero-card">
         <p className="eyebrow">Games &amp; Cool Programs</p>
         <h2>Playable and interactive program ideas</h2>
         <p>
-          This page includes interactive Java program ports from your backend app collection so each one
-          can be played directly in the browser.
+          Click any game title or Play button to launch it in a popup while keeping this page visible in
+          the background.
         </p>
       </div>
 
       <div className="project-grid">
         {gamesAndPrograms.map((program) => (
-          <article key={program.title} className="project-card">
+          <article key={program.id} className="project-card">
             <div className="project-head">
-              <h3>{program.title}</h3>
-              {program.to ? (
-                <Link to={program.to}>Play</Link>
-              ) : program.link ? (
-                <a href={program.link} target="_blank" rel="noreferrer">
-                  Play
-                </a>
-              ) : (
-                <span className="project-link-placeholder">Deploying Soon</span>
-              )}
+              <h3>
+                <button
+                  type="button"
+                  className="program-launch-link"
+                  onClick={() => openProgram(program.id)}
+                >
+                  {program.title}
+                </button>
+              </h3>
+              <button
+                type="button"
+                className="program-launch-link"
+                onClick={() => openProgram(program.id)}
+              >
+                Play
+              </button>
             </div>
             {program.language && (
               <p className="project-language">
@@ -84,6 +139,33 @@ export default function GamesCoolProgramsPage() {
           </article>
         ))}
       </div>
+
+      {activeProgram && ActiveProgramComponent && (
+        <div className="program-modal-overlay" role="presentation">
+          <div
+            className="program-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={`game-title-${activeProgram.id}`}
+          >
+            <button
+              type="button"
+              className="program-modal-close"
+              aria-label="Close game popup"
+              onClick={closeProgram}
+            >
+              X
+            </button>
+            <p className="eyebrow">Now Playing</p>
+            <h3 id={`game-title-${activeProgram.id}`} className="program-modal-title">
+              {activeProgram.title}
+            </h3>
+            <div className="program-modal-content">
+              <ActiveProgramComponent />
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

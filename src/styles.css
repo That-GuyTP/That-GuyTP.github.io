@@ -285,7 +285,8 @@ a {
 }
 
 .info-card a,
-.project-head a {
+.project-head a,
+.program-launch-link {
   display: inline-block;
   margin-top: 0.8rem;
   font-weight: 700;
@@ -294,8 +295,19 @@ a {
 }
 
 .info-card a:hover,
-.project-head a:hover {
+.project-head a:hover,
+.program-launch-link:hover {
   color: var(--accent-b);
+}
+
+.program-launch-link {
+  margin-top: 0;
+  border: none;
+  background: transparent;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
 }
 
 .document-card {
@@ -672,6 +684,65 @@ a {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.program-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  background: rgba(17, 39, 51, 0.42);
+  backdrop-filter: blur(2px);
+  display: grid;
+  place-items: center;
+  padding: 1.2rem;
+}
+
+.program-modal {
+  width: min(1020px, 100%);
+  max-height: min(92vh, 980px);
+  overflow: auto;
+  background: var(--bg-main);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: 0 24px 42px rgba(17, 39, 51, 0.28);
+  padding: 1.1rem;
+  position: relative;
+}
+
+.program-modal-close {
+  position: sticky;
+  top: 0.15rem;
+  margin-left: auto;
+  margin-bottom: 0.3rem;
+  width: 2.1rem;
+  height: 2.1rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--ink-strong);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.program-modal-close:hover {
+  border-color: var(--accent-a);
+  color: var(--accent-a);
+}
+
+.program-modal-close:focus-visible {
+  outline: 2px solid rgba(15, 139, 141, 0.35);
+  outline-offset: 1px;
+}
+
+.program-modal-title {
+  margin: 0 0 0.4rem;
+}
+
+.program-modal-content {
+  margin-top: 0.35rem;
+}
+
 .project-head {
   display: flex;
   align-items: baseline;
@@ -758,6 +829,15 @@ a {
 
   .module-card {
     grid-template-columns: 1fr;
+  }
+
+  .program-modal-overlay {
+    padding: 0.6rem;
+  }
+
+  .program-modal {
+    max-height: 95vh;
+    padding: 0.8rem;
   }
 
   .module-thumb-link {
