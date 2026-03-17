@@ -67,7 +67,7 @@ export default function ProjectsPage() {
         <h2>Portfolio builds beyond repos</h2>
         <p>
           This page highlights major projects and deliverables, including web builds, educational modules,
-          and your capstone work.
+          and my USC Capstone work.
         </p>
       </div>
 

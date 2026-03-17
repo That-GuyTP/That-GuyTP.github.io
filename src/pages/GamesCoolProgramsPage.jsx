@@ -21,7 +21,7 @@ const gamesAndPrograms = [
     title: 'SortSorter',
     language: 'Java',
     description:
-      'Playable module ported from your Java SortSorter backend files. Add words and sort them by "sort" match count.',
+      'Add words and sort them by "sort" match count.',
     tags: ['Playable Now', 'Original Source Linked', 'Algorithm'],
     component: SortSorterPage
   },
@@ -109,8 +109,7 @@ export default function GamesCoolProgramsPage() {
         <p className="eyebrow">Games &amp; Cool Programs</p>
         <h2>Playable and interactive program ideas</h2>
         <p>
-          Click any game title or Play button to launch it in a popup while keeping this page visible in
-          the background.
+          Click any game title to launch it in a popup!
         </p>
       </div>
 
