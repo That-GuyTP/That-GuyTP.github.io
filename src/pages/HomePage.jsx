@@ -9,7 +9,7 @@ const focusAreas = [
   {
     title: 'Computer Information Systems',
     description:
-      'Applying systems thinking to connect software, data, and infrastructure into useful solutions.'
+      'Implementing aspects of Information Technology and bridging the gap into Business Solutions.'
   },
   {
     title: 'Project Execution',
@@ -35,7 +35,7 @@ export default function HomePage() {
         <h2>Welcome to my coding work hub.</h2>
         <p>
           I am Thomas Peterson, a CIS major at USC. This site introduces who I am, highlights Java
-          and non-Java portfolio projects, and organizes supporting documents in one place.
+          and non-Java portfolio projects, and organizes my reference documents, all in one place.
         </p>
       </div>
 
