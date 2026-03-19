@@ -617,13 +617,179 @@ a {
   color: var(--ink-strong);
 }
 
+.program-form-grid textarea {
+  width: 100%;
+  font: inherit;
+  font-family: 'IBM Plex Mono', monospace;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 0.55rem 0.65rem;
+  background: #ffffff;
+  color: var(--ink-strong);
+  resize: vertical;
+  min-height: 140px;
+}
+
 .program-form-grid input:focus {
+  outline: 2px solid rgba(15, 139, 141, 0.35);
+  outline-offset: 1px;
+}
+
+.program-form-grid textarea:focus {
   outline: 2px solid rgba(15, 139, 141, 0.35);
   outline-offset: 1px;
 }
 
 .equation-checker-form {
   grid-template-columns: 1fr;
+}
+
+.coin-row-form {
+  grid-template-columns: 1fr;
+}
+
+.coin-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.coin-step-label {
+  display: grid;
+  gap: 0.45rem;
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+}
+
+.coin-step-label input {
+  width: 100%;
+}
+
+.coin-grid-legend {
+  margin-top: 0.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.legend-chip {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.22rem 0.55rem;
+  font-size: 0.76rem;
+  color: var(--ink-muted);
+  background: #ffffff;
+}
+
+.legend-chip.visited {
+  border-color: rgba(15, 139, 141, 0.35);
+  background: rgba(15, 139, 141, 0.08);
+}
+
+.legend-chip.current {
+  border-color: rgba(255, 122, 89, 0.5);
+  background: rgba(255, 122, 89, 0.12);
+}
+
+.legend-chip.wall {
+  border-color: rgba(53, 80, 91, 0.5);
+  background: rgba(53, 80, 91, 0.16);
+}
+
+.legend-chip.coin {
+  border-color: rgba(56, 142, 60, 0.45);
+  background: rgba(56, 142, 60, 0.1);
+}
+
+.legend-chip.collected {
+  border-color: rgba(56, 142, 60, 0.45);
+  background: rgba(56, 142, 60, 0.14);
+}
+
+.legend-chip.special {
+  border-color: rgba(245, 183, 0, 0.55);
+  background: rgba(245, 183, 0, 0.15);
+}
+
+.coin-grid-wrapper {
+  margin-top: 0.75rem;
+  overflow-x: auto;
+  padding-bottom: 0.2rem;
+}
+
+.coin-grid {
+  display: grid;
+  gap: 0.28rem;
+  min-width: max-content;
+  justify-content: start;
+}
+
+.coin-grid-cell {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
+}
+
+.coin-grid-cell.wall {
+  border-style: dashed;
+  border-color: rgba(53, 80, 91, 0.5);
+  background: rgba(53, 80, 91, 0.22);
+}
+
+.coin-grid-cell.path {
+  border-color: rgba(245, 183, 0, 0.45);
+  background: rgba(245, 183, 0, 0.11);
+}
+
+.coin-grid-cell.visited {
+  border-color: rgba(15, 139, 141, 0.48);
+  background: rgba(15, 139, 141, 0.12);
+}
+
+.coin-grid-cell.current {
+  border-color: rgba(255, 122, 89, 0.7);
+  box-shadow: 0 0 0 1px rgba(255, 122, 89, 0.28);
+  background: rgba(255, 122, 89, 0.2);
+}
+
+.coin-grid-cell.start,
+.coin-grid-cell.finish {
+  outline: 1px solid rgba(245, 183, 0, 0.8);
+  outline-offset: -1px;
+}
+
+.coin-grid-cell.collected .cell-value {
+  color: #1f6f31;
+}
+
+.coin-grid-cell.has-coin .cell-value {
+  color: #226f2f;
+}
+
+.coin-grid-cell.wall .cell-value {
+  color: #304a55;
+}
+
+.cell-value {
+  display: block;
+  line-height: 1;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--ink-strong);
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.coin-path-output {
+  font-family: 'IBM Plex Mono', monospace;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 .program-actions {

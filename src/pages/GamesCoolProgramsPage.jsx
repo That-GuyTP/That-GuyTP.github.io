@@ -5,8 +5,18 @@ import TriangleMakerPage from './TriangleMakerPage';
 import RockPaperScissorsPage from './RockPaperScissorsPage';
 import MorningRoutineAdventurePage from './MorningRoutineAdventurePage';
 import EquationCheckerPage from './EquationCheckerPage';
+import CoinRowRobotPage from './CoinRowRobotPage';
 
 const gamesAndPrograms = [
+  {
+    id: 'coin-row-robot',
+    title: 'Coin Row Robot',
+    language: 'C++',
+    description:
+      'Auto-generate a maze and watch the robot follow the best right/down path where each coin is worth 1.',
+    tags: ['Playable Now', 'C++', 'Maze Visualizer'],
+    component: CoinRowRobotPage
+  },
   {
     id: 'equation-checker',
     title: 'Equation Checker',
