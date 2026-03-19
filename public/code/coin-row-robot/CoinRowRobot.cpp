@@ -2,15 +2,14 @@
 #include <iostream>
 #include <limits>
 #include <random>
-#include <sstream>
 #include <stdexcept>
 #include <string>
 #include <vector>
 
-constexpr int MIN_DIMENSION = 3;
-constexpr int MAX_DIMENSION = 14;
+constexpr int MAZE_ROWS = 8;
+constexpr int MAZE_COLUMNS = 8;
 constexpr double WALL_RATE = 0.26;
-constexpr int MAX_COINS = 6;
+constexpr int TOTAL_COINS = 7;
 
 struct Cell {
   bool wall = false;
@@ -24,34 +23,9 @@ struct Position {
 
 struct RobotPlan {
   bool reachable = false;
-  long long maxCoins = 0;
-  int totalCoins = 0;
   std::vector<std::vector<long long>> dp;
   std::vector<Position> path;
 };
-
-int readDimension(const std::string &label) {
-  while (true) {
-    std::cout << label << " (" << MIN_DIMENSION << "-" << MAX_DIMENSION << "): ";
-    std::string line;
-
-    if (!std::getline(std::cin, line)) {
-      throw std::runtime_error("Input stream closed.");
-    }
-
-    std::istringstream parser(line);
-    int value = 0;
-    char leftover = '\0';
-
-    if (parser >> value && !(parser >> leftover) && value >= MIN_DIMENSION &&
-        value <= MAX_DIMENSION) {
-      return value;
-    }
-
-    std::cout << "Please enter a whole number between " << MIN_DIMENSION << " and "
-              << MAX_DIMENSION << ".\n";
-  }
-}
 
 std::vector<Position> buildGuaranteedPath(int rows, int columns, std::mt19937 &rng) {
   std::vector<Position> path;
@@ -114,9 +88,11 @@ std::vector<std::vector<Cell>> generateMaze(int rows, int columns, std::mt19937 
   }
 
   std::shuffle(openCells.begin(), openCells.end(), rng);
-  const int coinCount = std::min(MAX_COINS, static_cast<int>(openCells.size()));
+  if (static_cast<int>(openCells.size()) < TOTAL_COINS) {
+    throw std::runtime_error("Unable to place the required number of coins.");
+  }
 
-  for (int i = 0; i < coinCount; i++) {
+  for (int i = 0; i < TOTAL_COINS; i++) {
     const Position &cell = openCells[i];
     maze[cell.row][cell.column].coin = 1;
   }
@@ -167,19 +143,12 @@ RobotPlan buildRobotPlan(const std::vector<std::vector<Cell>> &maze) {
     }
   }
 
-  for (const auto &row : maze) {
-    for (const Cell &cell : row) {
-      plan.totalCoins += cell.coin;
-    }
-  }
-
   if (plan.dp[rows - 1][columns - 1] == NEGATIVE_INF) {
     plan.reachable = false;
     return plan;
   }
 
   plan.reachable = true;
-  plan.maxCoins = plan.dp[rows - 1][columns - 1];
 
   int row = rows - 1;
   int column = columns - 1;
@@ -300,8 +269,8 @@ int main() {
   std::mt19937 rng(device());
 
   std::cout << "Coin Row Robot (Auto-Generated Maze)\n";
-  std::cout << "Coins are equal value (1 each).\n";
-  std::cout << "At most " << MAX_COINS << " coins are scattered each run.\n";
+  std::cout << "Maze size is fixed at " << MAZE_ROWS << "x" << MAZE_COLUMNS << ".\n";
+  std::cout << "Each maze contains exactly " << TOTAL_COINS << " equal-value coins (1 each).\n";
   std::cout << "Robot moves right or down only.\n\n";
 
   while (true) {
@@ -318,9 +287,7 @@ int main() {
         return 0;
       }
 
-      const int rows = readDimension("Rows");
-      const int columns = readDimension("Columns");
-      const auto maze = generateMaze(rows, columns, rng);
+      const auto maze = generateMaze(MAZE_ROWS, MAZE_COLUMNS, rng);
       const RobotPlan plan = buildRobotPlan(maze);
 
       printMaze(maze);
@@ -330,8 +297,6 @@ int main() {
         continue;
       }
 
-      std::cout << "Total Coins In Maze: " << plan.totalCoins << "\n";
-      std::cout << "Maximum Coins Collectable: " << plan.maxCoins << "\n";
       printPath(plan.path);
       printCollectedCoinCells(maze, plan.path);
       printPathOverlay(maze, plan.path);

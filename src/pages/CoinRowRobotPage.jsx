@@ -1,27 +1,9 @@
 import { useEffect, useMemo, useState } from 'react';
 
-const MIN_DIMENSION = 3;
-const MAX_DIMENSION = 14;
-const DEFAULT_ROWS = 8;
-const DEFAULT_COLUMNS = 8;
+const GRID_ROWS = 8;
+const GRID_COLUMNS = 8;
+const TOTAL_COINS = 7;
 const WALL_RATE = 0.26;
-const MAX_COINS = 6;
-
-function parseDimension(rawValue, label) {
-  const parsed = Number.parseInt(rawValue, 10);
-
-  if (!Number.isInteger(parsed)) {
-    return { error: `${label} must be a whole number.` };
-  }
-
-  if (parsed < MIN_DIMENSION || parsed > MAX_DIMENSION) {
-    return {
-      error: `${label} must be between ${MIN_DIMENSION} and ${MAX_DIMENSION}.`
-    };
-  }
-
-  return { value: parsed };
-}
 
 function buildGuaranteedPath(rows, columns) {
   const path = [{ row: 0, column: 0 }];
@@ -50,7 +32,7 @@ function buildGuaranteedPath(rows, columns) {
   return path;
 }
 
-function generateMaze(rows, columns) {
+function generateMaze(rows = GRID_ROWS, columns = GRID_COLUMNS) {
   const guaranteedPath = buildGuaranteedPath(rows, columns);
   const guaranteedPathSet = new Set(
     guaranteedPath.map((cell) => `${cell.row}-${cell.column}`)
@@ -81,9 +63,11 @@ function generateMaze(rows, columns) {
     openCells[randomIndex] = temp;
   }
 
-  const coinCount = Math.min(MAX_COINS, openCells.length);
+  if (openCells.length < TOTAL_COINS) {
+    throw new Error('Unable to place all required coins.');
+  }
 
-  for (let i = 0; i < coinCount; i += 1) {
+  for (let i = 0; i < TOTAL_COINS; i += 1) {
     const { row, column } = openCells[i];
     maze[row][column].coin = 1;
   }
@@ -108,9 +92,7 @@ function buildRobotPlan(maze) {
       dp,
       path: [],
       pathPrefixTotals: [],
-      collectedCells: [],
-      totalCoins: maze.flat().reduce((sum, cell) => sum + cell.coin, 0),
-      maxCoins: 0
+      collectedCells: []
     };
   }
 
@@ -161,9 +143,7 @@ function buildRobotPlan(maze) {
       dp,
       path: [],
       pathPrefixTotals: [],
-      collectedCells: [],
-      totalCoins: maze.flat().reduce((sum, cell) => sum + cell.coin, 0),
-      maxCoins: 0
+      collectedCells: []
     };
   }
 
@@ -195,7 +175,6 @@ function buildRobotPlan(maze) {
   });
 
   const collectedCells = path.filter((cell) => maze[cell.row][cell.column].coin === 1);
-  const totalCoins = maze.flat().reduce((sum, cell) => sum + cell.coin, 0);
 
   return {
     reachable: true,
@@ -205,9 +184,7 @@ function buildRobotPlan(maze) {
     dp,
     path,
     pathPrefixTotals,
-    collectedCells,
-    totalCoins,
-    maxCoins: targetValue
+    collectedCells
   };
 }
 
@@ -220,8 +197,6 @@ export default function CoinRowRobotPage() {
     }
   ];
 
-  const [rowsInput, setRowsInput] = useState(String(DEFAULT_ROWS));
-  const [columnsInput, setColumnsInput] = useState(String(DEFAULT_COLUMNS));
   const [status, setStatus] = useState(null);
   const [result, setResult] = useState(null);
   const [currentStep, setCurrentStep] = useState(0);
@@ -265,26 +240,21 @@ export default function CoinRowRobotPage() {
   }, [isPlaying, result]);
 
   function generateMazeRun(autoplay) {
-    const parsedRows = parseDimension(rowsInput, 'Rows');
-    const parsedColumns = parseDimension(columnsInput, 'Columns');
+    let maze;
 
-    if (parsedRows.error) {
-      setStatus({ type: 'error', text: parsedRows.error });
+    try {
+      maze = generateMaze();
+    } catch (error) {
+      setStatus({
+        type: 'error',
+        text: `Maze generation failed: ${error instanceof Error ? error.message : 'Unknown error.'}`
+      });
       setResult(null);
       setCurrentStep(0);
       setIsPlaying(false);
       return;
     }
 
-    if (parsedColumns.error) {
-      setStatus({ type: 'error', text: parsedColumns.error });
-      setResult(null);
-      setCurrentStep(0);
-      setIsPlaying(false);
-      return;
-    }
-
-    const maze = generateMaze(parsedRows.value, parsedColumns.value);
     const plan = buildRobotPlan(maze);
 
     if (!plan.reachable) {
@@ -303,28 +273,13 @@ export default function CoinRowRobotPage() {
     setIsPlaying(autoplay && plan.path.length > 1);
     setStatus({
       type: 'success',
-      text:
-        `Generated a ${plan.rows}x${plan.columns} maze. ` +
-        `Up to ${MAX_COINS} coins are scattered, each worth 1.`
+      text: `Generated an ${GRID_ROWS}x${GRID_COLUMNS} maze with ${TOTAL_COINS} total coins.`
     });
   }
 
   function onGenerateAndPlay(event) {
     event.preventDefault();
     generateMazeRun(true);
-  }
-
-  function onGenerateOnly() {
-    generateMazeRun(false);
-  }
-
-  function resetAll() {
-    setRowsInput(String(DEFAULT_ROWS));
-    setColumnsInput(String(DEFAULT_COLUMNS));
-    setStatus(null);
-    setResult(null);
-    setCurrentStep(0);
-    setIsPlaying(false);
   }
 
   function togglePlayPause() {
@@ -375,8 +330,8 @@ export default function CoinRowRobotPage() {
         <p className="eyebrow">Playable Module</p>
         <h2>Coin Row Robot</h2>
         <p>
-          Press play to auto-generate a maze. Coins are equal-value (`1` each), and the robot finds the
-          best right/down route from start to finish.
+          Generate and play an auto-built maze. The robot finds the best right/down route from start to
+          finish while collecting equal-value coins (`1` each).
         </p>
       </div>
 
@@ -397,102 +352,22 @@ export default function CoinRowRobotPage() {
 
       <article className="program-panel">
         <form className="program-form-grid" onSubmit={onGenerateAndPlay}>
-          <label htmlFor="coin-maze-rows">
-            Rows
-            <input
-              id="coin-maze-rows"
-              type="number"
-              min={String(MIN_DIMENSION)}
-              max={String(MAX_DIMENSION)}
-              step="1"
-              value={rowsInput}
-              onChange={(event) => setRowsInput(event.target.value)}
-            />
-          </label>
-
-          <label htmlFor="coin-maze-columns">
-            Columns
-            <input
-              id="coin-maze-columns"
-              type="number"
-              min={String(MIN_DIMENSION)}
-              max={String(MAX_DIMENSION)}
-              step="1"
-              value={columnsInput}
-              onChange={(event) => setColumnsInput(event.target.value)}
-            />
-          </label>
-
           <div className="program-actions">
             <button type="submit" className="run-query-button">
-              Generate Maze &amp; Play
-            </button>
-            <button type="button" className="sortsorter-secondary-button" onClick={onGenerateOnly}>
-              Generate Maze Only
-            </button>
-            <button type="button" className="sortsorter-secondary-button" onClick={resetAll}>
-              Reset
+              Generate Maze and Play
             </button>
           </div>
         </form>
 
         <p className="query-label">
-          Maze cells are auto-generated as walls, empty spots (`0`), or coin spots (`1`), with a max
-          of {MAX_COINS} random coins.
+          Each run builds a fixed {GRID_ROWS}x{GRID_COLUMNS} maze with walls, empty spots (`0`), and
+          exactly {TOTAL_COINS} coin spots (`1`).
         </p>
         {status && <p className={`status-line ${status.type}`}>{status.text}</p>}
       </article>
 
       {hasPath && (
         <>
-          <div className="program-results-grid">
-            <article className="project-card">
-              <h3>Maximum Coins Collected</h3>
-              <p className="program-output">{result.maxCoins}</p>
-            </article>
-
-            <article className="project-card">
-              <h3>Total Coins In Maze</h3>
-              <p className="program-output">{result.totalCoins}</p>
-            </article>
-          </div>
-
-          <article className="program-panel">
-            <h3>Playback Controls</h3>
-            <div className="coin-controls">
-              <button type="button" className="sortsorter-secondary-button" onClick={goBackward}>
-                Step Back
-              </button>
-              <button type="button" className="run-query-button" onClick={togglePlayPause}>
-                {isPlaying ? 'Pause' : safeStep >= lastStep ? 'Replay Path' : 'Play Path'}
-              </button>
-              <button type="button" className="sortsorter-secondary-button" onClick={goForward}>
-                Step Forward
-              </button>
-            </div>
-
-            <label htmlFor="coin-row-step" className="coin-step-label">
-              Path step: {safeStep + 1}/{result.path.length}
-              <input
-                id="coin-row-step"
-                type="range"
-                min="0"
-                max={String(lastStep)}
-                step="1"
-                value={safeStep}
-                onChange={(event) => {
-                  setIsPlaying(false);
-                  setCurrentStep(Number(event.target.value));
-                }}
-              />
-            </label>
-
-            <p className="query-label">
-              Current cell: ({currentCell?.row}, {currentCell?.column}) | Coin here: {currentCellCoin} |
-              Total collected so far: {collectedSoFar}
-            </p>
-          </article>
-
           <article className="project-card">
             <h3>Robot Grid</h3>
             <div className="coin-grid-legend">
@@ -565,6 +440,42 @@ export default function CoinRowRobotPage() {
                 )}
               </div>
             </div>
+          </article>
+
+          <article className="program-panel">
+            <h3>Playback Controls</h3>
+            <div className="coin-controls">
+              <button type="button" className="sortsorter-secondary-button" onClick={goBackward}>
+                Step Back
+              </button>
+              <button type="button" className="run-query-button" onClick={togglePlayPause}>
+                {isPlaying ? 'Pause' : safeStep >= lastStep ? 'Replay Path' : 'Play Path'}
+              </button>
+              <button type="button" className="sortsorter-secondary-button" onClick={goForward}>
+                Step Forward
+              </button>
+            </div>
+
+            <label htmlFor="coin-row-step" className="coin-step-label">
+              Path step: {safeStep + 1}/{result.path.length}
+              <input
+                id="coin-row-step"
+                type="range"
+                min="0"
+                max={String(lastStep)}
+                step="1"
+                value={safeStep}
+                onChange={(event) => {
+                  setIsPlaying(false);
+                  setCurrentStep(Number(event.target.value));
+                }}
+              />
+            </label>
+
+            <p className="query-label">
+              Current cell: ({currentCell?.row}, {currentCell?.column}) | Coin here: {currentCellCoin} |
+              Total collected so far: {collectedSoFar}
+            </p>
           </article>
 
           <article className="project-card">
