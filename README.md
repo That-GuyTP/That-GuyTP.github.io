@@ -74,13 +74,17 @@ To enable it:
 
 ## Frontend-to-Backend Link
 
-For production frontend builds, set:
+For GitHub Pages production builds, set this as a repository variable:
 
-```bash
-VITE_LLL_API_BASE_URL=https://your-api-domain.example.com/api
-```
+1. Open **Settings** in this repository.
+2. Go to **Secrets and variables** -> **Actions** -> **Variables**.
+3. Click **New repository variable**.
+4. Name: `VITE_LLL_API_BASE_URL`
+5. Value: `https://your-api-domain.example.com/api`
 
-Then redeploy the GitHub Pages frontend.
+The deploy workflow reads this variable during `npm run build` and will fail if it is missing, so a broken frontend config is not published.
+
+For local production-style testing, you can also create `.env.production` with the same key/value.
 
 ## Legacy Node API
 
