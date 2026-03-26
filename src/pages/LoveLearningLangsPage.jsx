@@ -8,7 +8,19 @@ import germanFlag from '../images/lovelearninglangs/language_flags/germany.png';
 import defaultFlag from '../images/lovelearninglangs/language_flags/default.png';
 
 const TOKEN_STORAGE_KEY = 'lovelearninglangs_java_token_v1';
-const API_BASE_URL = (import.meta.env.VITE_LLL_API_BASE_URL || '/api').replace(/\/$/, '');
+
+function resolveApiBaseUrl(rawValue) {
+  const normalized = (rawValue || '/api').trim().replace(/\/+$/, '');
+  if (!normalized) {
+    return '/api';
+  }
+  if (normalized === '/api' || normalized.endsWith('/api')) {
+    return normalized;
+  }
+  return `${normalized}/api`;
+}
+
+const API_BASE_URL = resolveApiBaseUrl(import.meta.env.VITE_LLL_API_BASE_URL);
 
 const LANGUAGE_META = {
   ENGLISH: { label: 'English', icon: englishFlag },
@@ -27,15 +39,28 @@ async function apiRequest(path, { method = 'GET', body, token } = {}) {
     headers.Authorization = `Bearer ${token}`;
   }
 
-  const response = await fetch(`${API_BASE_URL}${path}`, {
-    method,
-    headers,
-    body: body ? JSON.stringify(body) : undefined
-  });
+  const requestUrl = `${API_BASE_URL}${path}`;
+  let response;
+  try {
+    response = await fetch(requestUrl, {
+      method,
+      headers,
+      body: body ? JSON.stringify(body) : undefined
+    });
+  } catch {
+    const error = new Error(
+      `Unable to reach ${requestUrl}. Confirm the backend is running and CORS allows this site.`
+    );
+    throw error;
+  }
 
   const payload = await response.json().catch(() => ({}));
   if (!response.ok) {
-    const error = new Error(payload.message || payload.error || 'Request failed.');
+    const fallbackMessage =
+      response.status === 404
+        ? `Endpoint not found at ${requestUrl}. Check VITE_LLL_API_BASE_URL and include /api.`
+        : `Request failed (${response.status}) at ${requestUrl}.`;
+    const error = new Error(payload.message || payload.error || fallbackMessage);
     error.status = response.status;
     error.payload = payload;
     throw error;
@@ -169,7 +194,7 @@ export default function LoveLearningLangsPage({ embedded = false }) {
           return;
         }
         setBootstrapError(
-          `${error.message} The API is currently unreachable. If this is production, set VITE_LLL_API_BASE_URL to your deployed backend URL.`
+          `${error.message} If this is production, set VITE_LLL_API_BASE_URL to your deployed backend URL (for example, https://your-api-domain.example.com/api).`
         );
       } finally {
         if (active) {
