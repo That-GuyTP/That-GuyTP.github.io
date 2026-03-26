@@ -1,15 +1,21 @@
+import { useEffect, useMemo, useState } from 'react';
 import knowingNarcolepsyThumbnail from '../images/KnowingNarcolepsyThumbnail.png';
 import loveLearningLangsThumbnail from '../images/LoveLearningLangsThumbnail.png';
 import taxPortThumbnail from '../images/TaxPortThumbnail.png';
+import LoveLearningLangsPage from './LoveLearningLangsPage';
 
 const projects = [
   {
+    id: 'lovelearninglangs',
     title: 'LoveLearningLangs',
-    link: 'https://github.com/That-GuyTP/TheCoolCoders-LoveLearningLangs-Frontend',
+    launchInModal: true,
+    modalComponent: LoveLearningLangsPage,
+    standaloneLink: '/projects/lovelearninglangs',
+    repoLink: 'https://github.com/That-GuyTP/TheCoolCoders-LoveLearningLangs-Frontend',
     thumbnail: loveLearningLangsThumbnail,
     description:
       'LoveLearningLangs is a team-based, language learning app. "The goal of this project is to create an application that can be used by individuals to learn languages. Users will be able to create an account, store progress, choose between langauges, work through a courselist, & complete exercises." It was our final project for CSCE 247 and was a blast to develop with my groupmates.',
-    tags: ['Application', 'Team Build']
+    tags: ['Application', 'Team Build', 'Live Web Edition']
   },
   {
     title: 'Knowing Narcolepsy',
@@ -42,6 +48,19 @@ function ProjectThumbnail({ project }) {
     fallback
   );
 
+  if (project.launchInModal) {
+    return (
+      <button
+        type="button"
+        className="module-thumb-link module-thumb-button"
+        aria-label={`Open ${project.title}`}
+        onClick={project.onOpen}
+      >
+        {imageOrFallback}
+      </button>
+    );
+  }
+
   if (project.link) {
     return (
       <a
@@ -60,6 +79,51 @@ function ProjectThumbnail({ project }) {
 }
 
 export default function ProjectsPage() {
+  const [activeProjectId, setActiveProjectId] = useState(null);
+
+  const activeProject = useMemo(
+    () => projects.find((project) => project.id === activeProjectId) ?? null,
+    [activeProjectId]
+  );
+
+  const ActiveProjectComponent = activeProject?.modalComponent ?? null;
+  const useImmersiveProjectModal = activeProject?.id === 'lovelearninglangs';
+
+  useEffect(() => {
+    if (!activeProject) {
+      return undefined;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+
+    function handleKeyDown(event) {
+      if (event.key === 'Escape') {
+        setActiveProjectId(null);
+      }
+    }
+
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [activeProject]);
+
+  const projectsWithHandlers = useMemo(
+    () =>
+      projects.map((project) => ({
+        ...project,
+        onOpen: project.launchInModal ? () => setActiveProjectId(project.id) : undefined
+      })),
+    []
+  );
+
+  function closeModal() {
+    setActiveProjectId(null);
+  }
+
   return (
     <section className="page-panel">
       <div className="hero-card">
@@ -74,12 +138,16 @@ export default function ProjectsPage() {
       <div className="module-panel">
         <p className="eyebrow">Featured Projects</p>
         <div className="module-grid">
-          {projects.map((project) => (
+          {projectsWithHandlers.map((project) => (
             <article key={project.title} className="module-card">
               <ProjectThumbnail project={project} />
               <div className="module-body">
                 <h3>
-                  {project.link ? (
+                  {project.launchInModal ? (
+                    <button type="button" className="program-launch-link" onClick={project.onOpen}>
+                      {project.title}
+                    </button>
+                  ) : project.link ? (
                     <a href={project.link} target="_blank" rel="noreferrer">
                       {project.title}
                     </a>
@@ -89,6 +157,18 @@ export default function ProjectsPage() {
                 </h3>
                 <p>{project.description}</p>
                 {!project.link && <p className="module-link-placeholder">Link coming soon.</p>}
+                {project.repoLink && (
+                  <p className="module-link-placeholder">
+                    <a href={project.repoLink} target="_blank" rel="noreferrer">
+                      View original repository
+                    </a>
+                  </p>
+                )}
+                {project.standaloneLink && (
+                  <p className="module-link-placeholder">
+                    <a href={`#${project.standaloneLink}`}>Open standalone page version</a>
+                  </p>
+                )}
                 <div className="project-metrics">
                   {project.tags.map((tag) => (
                     <span key={tag}>{tag}</span>
@@ -99,6 +179,35 @@ export default function ProjectsPage() {
           ))}
         </div>
       </div>
+
+      {activeProject && ActiveProjectComponent && (
+        <div className="program-modal-overlay" role="presentation">
+          <div
+            className={`program-modal ${useImmersiveProjectModal ? 'lovelearninglangs-modal' : ''}`}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={`project-title-${activeProject.id}`}
+          >
+            <button
+              type="button"
+              className="program-modal-close"
+              aria-label="Close project popup"
+              onClick={closeModal}
+            >
+              X
+            </button>
+            {!useImmersiveProjectModal && <p className="eyebrow">Live Demo</p>}
+            {!useImmersiveProjectModal && (
+              <h3 id={`project-title-${activeProject.id}`} className="program-modal-title">
+                {activeProject.title}
+              </h3>
+            )}
+            <div className="program-modal-content">
+              <ActiveProjectComponent embedded={useImmersiveProjectModal} />
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

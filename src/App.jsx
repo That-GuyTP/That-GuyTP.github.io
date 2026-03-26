@@ -10,6 +10,7 @@ import RockPaperScissorsPage from './pages/RockPaperScissorsPage';
 import MorningRoutineAdventurePage from './pages/MorningRoutineAdventurePage';
 import EquationCheckerPage from './pages/EquationCheckerPage';
 import CoinRowRobotPage from './pages/CoinRowRobotPage';
+import LoveLearningLangsPage from './pages/LoveLearningLangsPage';
 
 function SiteLayout() {
   return (
@@ -56,6 +57,7 @@ export default function App() {
       <Route path="/" element={<SiteLayout />}>
         <Route index element={<HomePage />} />
         <Route path="projects" element={<ProjectsPage />} />
+        <Route path="projects/lovelearninglangs" element={<LoveLearningLangsPage />} />
         <Route path="java-projects" element={<Navigate replace to="/projects" />} />
         <Route path="games-cool-programs" element={<GamesCoolProgramsPage />} />
           <Route path="games-cool-programs/coin-row-robot" element={<CoinRowRobotPage />} />
