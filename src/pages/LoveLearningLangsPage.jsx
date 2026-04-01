@@ -60,7 +60,8 @@ async function apiRequest(path, { method = 'GET', body, token } = {}) {
       response.status === 404
         ? `Endpoint not found at ${requestUrl}. Check VITE_LLL_API_BASE_URL and include /api.`
         : `Request failed (${response.status}) at ${requestUrl}.`;
-    const error = new Error(payload.message || payload.error || fallbackMessage);
+    const serverMessage = payload.message || payload.error;
+    const error = new Error(serverMessage ? `${serverMessage} (at ${requestUrl})` : fallbackMessage);
     error.status = response.status;
     error.payload = payload;
     throw error;

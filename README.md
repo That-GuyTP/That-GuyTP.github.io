@@ -3,7 +3,7 @@
 This repository hosts the React portfolio plus a LoveLearningLangs web migration:
 
 - Frontend: React/Vite site (GitHub Pages friendly)
-- Backend API: Java server in `java-backend/` for LoveLearningLangs persistence and auth
+- Backend API: separate repository at `That-GuyTP.github.io-Backend-`
 
 ## Pages Included
 
@@ -17,11 +17,11 @@ This repository hosts the React portfolio plus a LoveLearningLangs web migration
    ```bash
    npm install
    ```
-2. Start the backend API (terminal 1):
+2. (Optional) Start backend from the dedicated backend repo:
    ```bash
    npm run api
    ```
-3. Start the frontend dev server (terminal 2):
+3. Start the frontend dev server:
    ```bash
    npm run dev
    ```
@@ -30,41 +30,24 @@ This repository hosts the React portfolio plus a LoveLearningLangs web migration
    npm run build
    ```
 
-The Vite dev server proxies `/api` to `http://localhost:8787`.
+For local API integration, run the backend from the separate backend repository and set:
+
+```bash
+VITE_LLL_API_BASE_URL=http://localhost:8080/api
+```
 
 ## LoveLearningLangs API
 
-Backend entrypoint:
+The LoveLearningLangs backend code is owned by the backend repository:
 
-- Java main class: `com.thatguytp.lovelearninglangs.api.Main`
-- Source root: `java-backend/src/main/java`
-
-Data files:
-- `server/data/Words.json`
-- `server/data/Phrases.json`
-- `server/data/Users.json`
-- `server/data/IpSaveHistory.json`
-
-Key behavior:
-- Password hashing with PBKDF2
-- Signed auth tokens
-- Save throttling per IP (`LLL_SAVE_LIMIT_MAX` in `LLL_SAVE_LIMIT_WINDOW_MS`)
-- Inactive user cleanup after 7 days (configurable)
-- Exercise generation, grading, and progression logic executed in Java backend
-
-Environment variables:
-- `LLL_API_PORT` (default `8787`)
-- `LLL_TOKEN_SECRET` (set this in production)
-- `LLL_ALLOWED_ORIGINS` (comma-separated, default `*`)
-- `LLL_USER_RETENTION_MS` (default 7 days)
-- `LLL_SAVE_LIMIT_MAX` (default `50`)
-- `LLL_SAVE_LIMIT_WINDOW_MS` (default `3600000`, 1 hour)
+- Path: `C:\Users\hdriv\Documents\Coding\GitHub\That-GuyTP.github.io-Backend-`
+- Deployed host should expose `GET /api/health` and `GET /api/content/bootstrap`
 
 ## Deployment (GitHub Pages)
 
 This repo includes `.github/workflows/deploy.yml` to publish the React frontend to GitHub Pages.
 
-Because GitHub Pages is static, the LoveLearningLangs backend must be deployed separately (Render/Railway/Fly/etc).
+Because GitHub Pages is static, the backend must be deployed separately (Render/Railway/Fly/etc) from the backend repository.
 
 To enable it:
 1. In GitHub, open this repository's **Settings**.
@@ -86,12 +69,19 @@ The deploy workflow reads this variable during `npm run build` and will fail if 
 
 For local production-style testing, you can also create `.env.production` with the same key/value.
 
-## Legacy Node API
+Before setting the frontend variable, verify the backend host returns:
 
-The previous Node backend is still in `server/index.js` for reference.
+```bash
+https://your-api-domain.example.com/api/health
+```
 
-- Run it manually with `npm run api:node`
-- Default `npm run api` now runs the Java backend
+Expected response includes:
+
+```json
+{"ok":true}
+```
+
+If `/health` works but `/api/health` returns `404`, the wrong backend service is deployed for LoveLearningLangs.
 
 ## Documents Folder
 

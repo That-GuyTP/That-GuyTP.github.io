@@ -1,4 +1,5 @@
-import { Navigate, NavLink, Outlet, Route, Routes } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Navigate, NavLink, Outlet, Route, Routes, useLocation } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import ProjectsPage from './pages/ProjectsPage';
 import DocumentsPage from './pages/DocumentsPage';
@@ -13,6 +14,13 @@ import CoinRowRobotPage from './pages/CoinRowRobotPage';
 import LoveLearningLangsPage from './pages/LoveLearningLangsPage';
 
 function SiteLayout() {
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setMobileNavOpen(false);
+  }, [location.pathname]);
+
   return (
     <div className="site-shell">
       <header className="site-header">
@@ -20,21 +28,39 @@ function SiteLayout() {
           <p className="brand-kicker">Code Portfolio</p>
           <h1>Thomas Peterson</h1>
         </div>
-        <nav aria-label="Main navigation">
-          <ul className="nav-list">
+        <nav className="site-nav" aria-label="Main navigation">
+          <button
+            type="button"
+            className={`nav-toggle ${mobileNavOpen ? 'open' : ''}`}
+            aria-expanded={mobileNavOpen}
+            aria-controls="site-main-nav"
+            aria-label={mobileNavOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            onClick={() => setMobileNavOpen((previous) => !previous)}
+          >
+            <span className="nav-toggle-bar" aria-hidden="true" />
+            <span className="nav-toggle-bar" aria-hidden="true" />
+            <span className="nav-toggle-bar" aria-hidden="true" />
+          </button>
+          <ul id="site-main-nav" className={`nav-list ${mobileNavOpen ? 'open' : ''}`}>
             <li>
-              <NavLink to="/" end>
+              <NavLink to="/" end onClick={() => setMobileNavOpen(false)}>
                 Home
               </NavLink>
             </li>
             <li>
-              <NavLink to="/projects">Projects</NavLink>
+              <NavLink to="/projects" onClick={() => setMobileNavOpen(false)}>
+                Projects
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/games-cool-programs">Games &amp; Cool Programs</NavLink>
+              <NavLink to="/games-cool-programs" onClick={() => setMobileNavOpen(false)}>
+                Games &amp; Cool Programs
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/documents">Documents</NavLink>
+              <NavLink to="/documents" onClick={() => setMobileNavOpen(false)}>
+                Documents
+              </NavLink>
             </li>
           </ul>
         </nav>

@@ -5,8 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "api": "mvn -f java-backend/pom.xml -q compile && java -cp \"java-backend/target/classes;java-backend/lib/json-simple-1.1.1.jar\" com.thatguytp.lovelearninglangs.api.Main",
-    "api:node": "node server/index.js",
+    "api": "mvn -f ../That-GuyTP.github.io-Backend-/pom.xml -q spring-boot:run",
     "build": "vite build",
     "preview": "vite preview"
   },

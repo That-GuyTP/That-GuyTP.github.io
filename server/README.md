@@ -1,14 +1,9 @@
 # Server Data Folder
 
-This directory stores mutable JSON data used by the LoveLearningLangs Java API:
+This directory is now legacy reference data from earlier local backend iterations.
 
-- `Words.json`
-- `Phrases.json`
-- `Users.json`
-- `IpSaveHistory.json`
+The active backend implementation lives in the dedicated backend repository:
 
-The active API implementation is in:
+- `C:\Users\hdriv\Documents\Coding\GitHub\That-GuyTP.github.io-Backend-`
 
-- `java-backend/src/main/java/com/thatguytp/lovelearninglangs/api`
-
-Legacy Node API code remains at `server/index.js` for reference only.
+The deployed API for LoveLearningLangs is served from that repository.
