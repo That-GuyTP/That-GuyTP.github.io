@@ -20,10 +20,11 @@ const focusAreas = [
 
 const modules = [
   {
-    title: 'GarnetGrid',
+    title: 'TaxPort',
     link: 'https://garnetgrid-1.onrender.com/',
     thumbnail: taxPortThumbnail,
-    description: 'Add a short description for this module here.'
+    description:
+      'TaxPort is a tax document based software that is created with the goal to make the process of organising documents between a CPA and their clients streamlined. It is currently still in Beta but will be fully complete by the end of the semester.'
   }
 ];
 
