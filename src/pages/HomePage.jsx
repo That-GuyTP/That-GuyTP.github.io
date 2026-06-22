@@ -1,4 +1,4 @@
-import knowingNarcolepsyThumbnail from '../images/KnowingNarcolepsyThumbnail.png';
+import taxPortThumbnail from '../images/TaxPortThumbnail.png';
 
 const focusAreas = [
   {
@@ -20,9 +20,9 @@ const focusAreas = [
 
 const modules = [
   {
-    title: 'Knowing Narcolepsy',
-    link: 'https://that-guytp.github.io/Knowing-Narcolepsy/',
-    thumbnail: knowingNarcolepsyThumbnail,
+    title: 'GarnetGrid',
+    link: 'https://garnetgrid-1.onrender.com/',
+    thumbnail: taxPortThumbnail,
     description: 'Add a short description for this module here.'
   }
 ];
