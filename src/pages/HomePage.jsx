@@ -24,7 +24,7 @@ const modules = [
     link: 'https://garnetgrid-1.onrender.com/',
     thumbnail: taxPortThumbnail,
     description:
-      'TaxPort is a tax document based software that is created with the goal to make the process of organising documents between a CPA and their clients streamlined. It is currently still in Beta but will be fully complete by the end of the semester.'
+      'TaxPort is a tax document based software that is created with the goal to make the process of organising documents between a CPA and their clients streamlined. It was completed as apart of my Capstone Project for my BSc.'
   }
 ];
 
